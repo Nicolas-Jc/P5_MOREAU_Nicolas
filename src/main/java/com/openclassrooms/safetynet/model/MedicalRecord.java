@@ -1,32 +1,83 @@
 package com.openclassrooms.safetynet.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
 public class MedicalRecord {
+
     private String firstName;
     private String lastName;
-    private String birthdate;
+    //Pour débloquer bug "Cannot parse date "03/06/1984":
+    // not compatible with any of standard forms ("yyyy-MM-dd
+    @JsonFormat(pattern = "dd/MM/YYYY")
+    private Date birthdate;
     private List<String> medications;
     private List<String> allergies;
 
-    @Override
-    public String toString() {
-        StringBuilder mr = new StringBuilder();
-        mr.append("***** MedicalRecord Details *****\n");
-        mr.append("firstName=" + getFirstName() + "\n");
-        mr.append("lastName=" + getLastName() + "\n");
-        mr.append("birthdate=" + getBirthdate() + "\n");
-        mr.append("medications=" + Arrays.toString(getMedications().toArray()) + "\n");
-        mr.append("allergies=" + Arrays.toString(getAllergies().toArray()) + "\n");
-        mr.append("*****************************" + "\n");
-
-        return mr.toString();
+    public MedicalRecord() {
+        super();
     }
 
+    public MedicalRecord(String firstName, String lastName, Date birthdate, List<String> medications,
+                         List<String> allergies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.medications = medications;
+        this.allergies = allergies;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getBirthdate() {
+        Date localDate = birthdate;
+        return localDate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public List<String> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<String> medications) {
+        this.medications = medications;
+    }
+
+    public List<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<String> allergies) {
+        this.allergies = allergies;
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalRecord{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthdate=" + birthdate +
+                ", medications=" + medications +
+                ", allergies=" + allergies +
+                '}';
+    }
 }
