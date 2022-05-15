@@ -1,72 +1,63 @@
 package com.openclassrooms.safetynet.service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetynet.dao.*;
 import com.openclassrooms.safetynet.data.Data;
 import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.data.ObjectsSafetyNet;
 import com.openclassrooms.safetynet.model.Person;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
-
 import java.io.File;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @SpringBootApplication
 @Service
 public class LoadObjectsService implements CommandLineRunner {
-
-    @Autowired
-    PersonDAO personDao;
-
-    @Autowired
-    FireStationDAO fireStationDao;
-
-    @Autowired
-    MedicalRecordsDAO medicalRecordsDao;
+    private static final Logger logger = LogManager.getLogger("LoadObjectsService");
 
     @Value("${filename}")
     private String fileName;
 
-
     @Override
     public void run(String... args) throws Exception {
 
-        System.out.println("Entrée LoadObjectsService");
+        try {
+            ObjectMapper mapper = new ObjectMapper();
 
-        //Path path = Paths.get("src\\main\\resources\\json\\dataIn.json");
+            ObjectsSafetyNet object = mapper.readValue(new File(fileName), ObjectsSafetyNet.class);
 
+            List<Person> listPerson = object.getPersons();
+            List<FireStation> listFireStation = object.getFirestations();
+            List<MedicalRecord> listMedicalRecord = object.getMedicalrecords();
 
-        List<Person> listPerson = new ArrayList<>();
-        List<FireStation> listFireStation = new ArrayList<>();
-        List<MedicalRecord> listMedicalRecord = new ArrayList<>();
+            // Alimentation du DTO
+            //personDao.setAllPersons(listPerson);
+            Data.setPersons(listPerson);
+            //fireStationDao.setAllFireStations(listFireStation);
+            Data.setFireStations(listFireStation);
+            //medicalRecordsDao.setAllMedicalRecords(listmedicalRecord);
+            Data.setMedicalRecords(listMedicalRecord);
 
-        ObjectMapper mapper = new ObjectMapper();
+            logger.info("Loaded Json objects");
 
-        ObjectsSafetyNet object = mapper.readValue(new File(fileName), ObjectsSafetyNet.class);
-
-        listPerson = object.getPersons();
-        listFireStation = object.getFirestations();
-        listMedicalRecord = object.getMedicalrecords();
-
-        System.out.println("listPerson :" + listPerson);
-        System.out.println("listFireStation :" + listFireStation);
-        System.out.println("listmedicalRecord :" + listMedicalRecord);
-        //System.out.println(listmedicalRecord.toString());
-
-        //personDao.setAllPersons(listPerson);
-        Data.setPersons(listPerson);
-        //fireStationDao.setAllFireStations(listFireStation);
-        Data.setFireStations(listFireStation);
-        //medicalRecordsDao.setAllMedicalRecords(listmedicalRecord);
-        Data.setMedicalRecords(listMedicalRecord);
-
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+            logger.error("Mapping JSON Error", e);
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+            logger.error("Parsing JSON Error", e);
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("Input/Output JSON Error", e);
+        }
     }
 }

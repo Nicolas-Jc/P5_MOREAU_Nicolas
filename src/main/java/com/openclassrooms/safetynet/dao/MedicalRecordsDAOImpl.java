@@ -4,7 +4,6 @@ import com.openclassrooms.safetynet.data.Data;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
