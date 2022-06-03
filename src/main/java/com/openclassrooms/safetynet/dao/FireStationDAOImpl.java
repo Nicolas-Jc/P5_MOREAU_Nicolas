@@ -25,7 +25,7 @@ public class FireStationDAOImpl implements FireStationDAO {
     }
 
     @Override
-    // Fonction qui retourne la liste "adresses" des adresses couvertes par un numero de station donné
+    // Fonction qui retourne la liste "adresses" couvertes par un numero de station donné
     public List<String> getFireStationAdressById(String station) {
         List<String> listAddress = new ArrayList<>();
         // Lecture de la liste des FireStation du fichier d'entre Json

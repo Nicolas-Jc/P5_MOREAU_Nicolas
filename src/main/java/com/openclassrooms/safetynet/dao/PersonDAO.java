@@ -11,4 +11,6 @@ public interface PersonDAO {
 
     public void setAllPersons(List<Person> listPerson);
 
+    public List<Person> findPersonByAdress(String address);
+
 }

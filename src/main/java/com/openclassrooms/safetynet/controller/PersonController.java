@@ -48,12 +48,12 @@ public class PersonController {
         return personService.getPhoneAlertByFirestation(station);
     }
 
-    /*
+
     // ********************* EndPoint No 3 - childAlert ***************************************
     @GetMapping(value = "/childAlert")
     public List<ChildAlertDTO> getChildAlert(@RequestParam("address") String address) throws Exception {
 
         logger.info("getChildAlert : OK");
         return personService.getChildAlertByAddress(address);
-    }*/
+    }
 }

@@ -24,5 +24,19 @@ public class PersonDAOImpl implements PersonDAO {
 
     }
 
+    @Override
+    public List<Person> findPersonByAdress(String address) {
+        // Création Liste des personnes résidant à l'adresse en paramètre
+        List<Person> listPersonByAddress = new ArrayList<>();
+        // Boucle sur la liste des presonnes du fichier en entrée
+        for (Person p : Data.getPersons()) {
+            if (p.getAddress().equals(address)) {
+                listPersonByAddress.add(p);
+            }
+        }
+        return listPersonByAddress;
+
+    }
+
 
 }

@@ -21,4 +21,11 @@ public class MedicalRecordService {
         return medicalRecordsDAO.getAllMedicalRecords();
     }
 
+    public MedicalRecord findMedicalRecord(String firstName, String lastName) {
+        return medicalRecordsDAO.getMedicalRecords(firstName, lastName);
+    }
+    /*
+    public MedicalRecord findMedicalRecord(String firstName, String lastName) {
+        return MedicalRecordsDAO.getMedicalRecords(firstName, lastName);
+    }*/
 }
