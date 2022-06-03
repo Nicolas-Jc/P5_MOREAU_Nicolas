@@ -39,12 +39,9 @@ public class LoadObjectsService implements CommandLineRunner {
             List<FireStation> listFireStation = object.getFirestations();
             List<MedicalRecord> listMedicalRecord = object.getMedicalrecords();
 
-            // Alimentation du DTO
-            //personDao.setAllPersons(listPerson);
+
             Data.setPersons(listPerson);
-            //fireStationDao.setAllFireStations(listFireStation);
             Data.setFireStations(listFireStation);
-            //medicalRecordsDao.setAllMedicalRecords(listmedicalRecord);
             Data.setMedicalRecords(listMedicalRecord);
 
             logger.info("Loaded Json objects");

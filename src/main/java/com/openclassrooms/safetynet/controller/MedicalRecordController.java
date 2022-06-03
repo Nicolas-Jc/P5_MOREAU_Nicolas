@@ -13,11 +13,13 @@ import java.util.List;
 @RestController
 public class MedicalRecordController {
 
+    @Autowired
+    MedicalRecordService medicalRecordService;
+
     @GetMapping("/medicalrecords")
     public List<MedicalRecord> getMedicalRecords() {
         return medicalRecordService.findAll();
     }
 
-    @Autowired
-    MedicalRecordService medicalRecordService;
+
 }

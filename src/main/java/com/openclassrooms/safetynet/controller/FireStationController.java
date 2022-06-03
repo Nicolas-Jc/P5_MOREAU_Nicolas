@@ -13,12 +13,13 @@ import java.util.List;
 @RestController
 public class FireStationController {
 
+    @Autowired
+    FireStationService fireStationService;
+
     @GetMapping("/firestations")
     public List<FireStation> getFireStations() {
         return fireStationService.findAll();
     }
 
-    @Autowired
-    FireStationService fireStationService;
 
 }

@@ -19,8 +19,7 @@ public class MedicalRecordsDAOImpl implements MedicalRecordsDAO {
     @Override
     public void setAllMedicalRecords(List<MedicalRecord> listMedicalRecord) {
         Data.setMedicalRecords(listMedicalRecord);
-        //this.medicalRecords = listMedicalRecord;
-
+        
     }
 
 }

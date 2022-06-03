@@ -1,6 +1,8 @@
 package com.openclassrooms.safetynet.controller;
 
+import com.openclassrooms.safetynet.dto.ChildAlertDTO;
 import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
+import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
 import com.openclassrooms.safetynet.model.Person;
 import com.openclassrooms.safetynet.service.PersonService;
 import org.apache.logging.log4j.LogManager;
@@ -25,17 +27,33 @@ public class PersonController {
         return personService.findAll();
     }
 
-    // ********************* A VOIR ***************************************
+    // ********************* EndPoint No 1 - communityEmail ***************************************
     @GetMapping(value = "/communityEmail")
     public List<CommunityEmailDTO> getCommunityEmail(@RequestParam("city") String city) throws Exception {
 
         if (city.isEmpty()) {
             logger.error("getCommunityEmail => city empty !");
-            throw new Exception("city value is empty");
+            throw new Exception("city is empty");
         }
-        logger.info("getCommunityEmail OK");
-        return personService.getCommunityEmail(city);
+        logger.info("getCommunityEmail : OK");
+        return personService.getCommunityEmailByCity(city);
 
     }
 
+    // ********************* EndPoint No 2 - phoneAlert ***************************************
+    @GetMapping(value = "/phoneAlert")
+    public List<PhoneAlertDTO> getPhoneAlert(@RequestParam("firestation") String station) throws Exception {
+
+        logger.info("getPhoneAlert : OK");
+        return personService.getPhoneAlertByFirestation(station);
+    }
+
+    /*
+    // ********************* EndPoint No 3 - childAlert ***************************************
+    @GetMapping(value = "/childAlert")
+    public List<ChildAlertDTO> getChildAlert(@RequestParam("address") String address) throws Exception {
+
+        logger.info("getChildAlert : OK");
+        return personService.getChildAlertByAddress(address);
+    }*/
 }
