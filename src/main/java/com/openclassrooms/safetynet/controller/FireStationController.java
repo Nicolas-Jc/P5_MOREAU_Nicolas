@@ -27,7 +27,6 @@ public class FireStationController {
     @Autowired
     PersonService personService;
 
-
     @GetMapping
     public FireStationDTO getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
         logger.info("getFireStationCoverage OK");

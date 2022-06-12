@@ -2,10 +2,7 @@ package com.openclassrooms.safetynet.service;
 
 import com.openclassrooms.safetynet.dao.FireStationDAO;
 import com.openclassrooms.safetynet.dao.PersonDAO;
-import com.openclassrooms.safetynet.dto.ChildAlertDTO;
-import com.openclassrooms.safetynet.dto.FireStationDTO;
-import com.openclassrooms.safetynet.dto.InfoPersonDTO;
-import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
+import com.openclassrooms.safetynet.dto.*;
 import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
@@ -24,9 +21,6 @@ public class FireStationService {
 
     @Autowired
     private PersonDAO personDAO;
-
-    @Autowired
-    private PersonService personService;
 
     @Autowired
     private MedicalRecordService medicalRecordService;
@@ -55,8 +49,10 @@ public class FireStationService {
 
     public FireStationDTO fireStationPersonsScope(String station) {
 
+        FireStationDTO fireStationDTO = new FireStationDTO();
+
         // Format de fichier attendu en sortie (constituée d'une Liste et 2 compteurs)
-        List<FireStationDTO> fireStationDTO = new ArrayList<>();
+        //List<FireStationDTO> fireStationDTO = new ArrayList<>();
 
         // Format de fichier en sortie (Liste SANS les compteurs)
         //List<InfoPersonDTO> fireStationPersons = new ArrayList<>();
@@ -75,11 +71,8 @@ public class FireStationService {
         //List<Person> listPersons = findAll();
         List<Person> listPersons = personDAO.getAllPersons();
 
-        System.out.println("Entree FireStationService fireStationPersonsScope");
-
         // Boucle sur chaque occurence de la liste persons (Fichier entrée)
         for (Person p : listPersons) {
-            //InfoPersonDTO infoPerson = personService.getFullInformationPerson(p);
 
             if (listAdress.contains(p.getAddress())) {
                 MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
@@ -90,7 +83,6 @@ public class FireStationService {
                 fireStationPersons.setAddress(p.getAddress());
                 fireStationPersons.setPhone(p.getPhone());
                 //fireStationDTO.add(fireStationPersons);
-
 
                 if (medicalRecord != null) {
                     agePerson = calculateFonction.calculateAge(medicalRecord.getBirthdate());
@@ -119,4 +111,9 @@ public class FireStationService {
         return null;
 
     }
+
+    /*public String stationNumber(String address) {
+        return fireStationDAO.getStationByAddress(address);
+    }*/
+
 }

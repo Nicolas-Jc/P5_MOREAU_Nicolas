@@ -35,6 +35,9 @@ public class PersonService {
     private MedicalRecordService medicalRecordService;
 
     @Autowired
+    private FireStationService fireStationService;
+
+    @Autowired
     private CalculateFonction calculateFonction;
 
 
@@ -101,27 +104,19 @@ public class PersonService {
 
     }
 
-    // 3. URL "ChildAlert"
-    // Cette url doit retourner une liste d'enfants (tout individu  âgé de 18 ans ou moins)
-    // habitant à cette adresse.
-    // La liste doit comprendre le prénom et le nom de famille de chaque enfant,
-    // son âge et une liste des autres membres du foyer.
-    // S'il n'y a pas d'enfant, cette url peut renvoyer une chaîne vide.
+    // URL No.3 "ChildAlert"
     public List<ChildAlertDTO> getChildAlertByAddress(String address) {
-        // Liste des différentes personnes résidant à l'adresse saisie dans l'URL
+
         List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
 
         // Création Liste attendue pour sortie
         List<ChildAlertDTO> listChildInfo = new ArrayList<>();
 
-        // Boucle sur la liste des personnes résidant à l'adresse saisie avec pour clé de recherche
-        // Nom - Prénom
         for (Person p : allPersonInAdress) {
             MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
 
             if (medicalRecord != null) {
                 int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
-                System.out.println(age);
 
                 // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
                 if (age <= 18) {
@@ -135,6 +130,38 @@ public class PersonService {
             }
         }
         return listChildInfo;
+    }
+
+    // URL No.4 "Fire"
+    public List<FireDTO> getPersonByAddress(String address) {
+
+        List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
+
+        // Création Liste attendue pour sortie
+        List<FireDTO> listPersonInfo = new ArrayList<>();
+
+        for (Person p : allPersonInAdress) {
+            MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
+
+            if (medicalRecord != null) {
+                int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
+
+                // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
+                //if (age <= 18) {
+                FireDTO personInfo = new FireDTO();
+                personInfo.setFirstName(p.getFirstName());
+                personInfo.setLastName(p.getLastName());
+                personInfo.setPhone(p.getPhone());
+                personInfo.setAge(age);
+                personInfo.setPhone(p.getPhone());
+                personInfo.setStation(fireStationDAO.getStationByAddress(p.getAddress()));
+                personInfo.setMedications(medicalRecord.getMedications());
+                personInfo.setAllergies(medicalRecord.getAllergies());
+                listPersonInfo.add(personInfo);
+                //}
+            }
+        }
+        return listPersonInfo;
     }
 
     public Boolean delete(String firstName, String lastName) {

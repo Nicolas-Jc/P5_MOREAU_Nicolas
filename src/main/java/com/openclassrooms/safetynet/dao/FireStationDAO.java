@@ -17,4 +17,6 @@ public interface FireStationDAO {
     FireStation modifyFireStation(FireStation fireStation);
 
     FireStation addFireStation(FireStation fireStation);
+
+    String getStationByAddress(String address);
 }

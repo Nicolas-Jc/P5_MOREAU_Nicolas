@@ -3,6 +3,7 @@ package com.openclassrooms.safetynet.dto;
 import java.util.List;
 
 public class FireDTO {
+    String firstName;
     String lastName;
     String phone;
     int age;
@@ -16,6 +17,14 @@ public class FireDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String lastName) {
+        this.firstName = lastName;
     }
 
     public String getPhone() {
