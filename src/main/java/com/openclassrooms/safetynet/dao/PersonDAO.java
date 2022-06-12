@@ -16,5 +16,7 @@ public interface PersonDAO {
 
     Person addPerson(Person person);
 
+    List<Person> findPersonByFirstNameAndLastName(String firstName, String lastName);
+
     Person modifyPerson(Person person);
 }

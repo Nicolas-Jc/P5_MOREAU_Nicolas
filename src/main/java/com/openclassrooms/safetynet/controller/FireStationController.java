@@ -1,10 +1,8 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
-import com.openclassrooms.safetynet.dto.FireStationDTO;
-import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
+import com.openclassrooms.safetynet.dto.FireStationPerimeter;
+import com.openclassrooms.safetynet.dto.PersonFireStationDTO;
 import com.openclassrooms.safetynet.model.FireStation;
-import com.openclassrooms.safetynet.model.Person;
 import com.openclassrooms.safetynet.service.FireStationService;
 import com.openclassrooms.safetynet.service.PersonService;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +26,7 @@ public class FireStationController {
     PersonService personService;
 
     @GetMapping
-    public FireStationDTO getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
+    public FireStationPerimeter getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
         logger.info("getFireStationCoverage OK");
         return fireStationService.fireStationPersonsScope(station);
     }

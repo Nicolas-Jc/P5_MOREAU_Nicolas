@@ -47,15 +47,13 @@ public class FireStationService {
         return fireStationDAO.addFireStation(fireStation);
     }
 
-    public FireStationDTO fireStationPersonsScope(String station) {
+    public FireStationPerimeter fireStationPersonsScope(String station) {
 
-        FireStationDTO fireStationDTO = new FireStationDTO();
+        // Liste Attendue en sortie avec les 2 compteurs
+        FireStationPerimeter fireStationPerimeter = new FireStationPerimeter();
 
-        // Format de fichier attendu en sortie (constituée d'une Liste et 2 compteurs)
-        //List<FireStationDTO> fireStationDTO = new ArrayList<>();
-
-        // Format de fichier en sortie (Liste SANS les compteurs)
-        //List<InfoPersonDTO> fireStationPersons = new ArrayList<>();
+        // Liste attendue en sortie SANS les compteurs
+        List<PersonFireStationDTO> personFireStationDTO = new ArrayList<>();
 
         int countChild = 0;
         int countAdult = 0;
@@ -64,19 +62,15 @@ public class FireStationService {
         // Liste des différentes adresses desservies par le No de station saisi dans le Json Entree
         List<String> listAdress = fireStationDAO.getFireStationAdressById(station);
 
-        // Création Liste attendue vide pour sortie (Liste : Prenom, Nom, Adresse et No Tel + Compteurs)
-        //List<FireStationDTO> listPersonInfo = new ArrayList<>();
-
         // Récupération de la Liste de toutes les persons du fichier en entrée
-        //List<Person> listPersons = findAll();
-        List<Person> listPersons = personDAO.getAllPersons();
+        List<Person> listPersonsAll = personDAO.getAllPersons();
 
         // Boucle sur chaque occurence de la liste persons (Fichier entrée)
-        for (Person p : listPersons) {
+        for (Person p : listPersonsAll) {
 
             if (listAdress.contains(p.getAddress())) {
                 MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
-                InfoPersonDTO fireStationPersons = new InfoPersonDTO();
+                PersonFireStationDTO fireStationPersons = new PersonFireStationDTO();
 
                 fireStationPersons.setFirstName(p.getFirstName());
                 fireStationPersons.setLastName(p.getLastName());
@@ -94,6 +88,7 @@ public class FireStationService {
                     countAdult++;
                     System.out.println(countAdult);
                 }
+                personFireStationDTO.add(fireStationPersons);
             }
             // Liste des personnes (Sans les compteurs)
             //fireStationPersons.add(fireStationPersons);
@@ -101,14 +96,16 @@ public class FireStationService {
         }
         //fireStationDTO.add(fireStationPersons);
 
-
         // Mise en forme Liste final : Liste personnes + 2 compteurs
         /*fireStationDTO.setFireStationPersons(fireStationPersons);
         fireStationDTO.setAdultCount(countAdult);
         fireStationDTO.setChildCount(countChild);*/
 
+        fireStationPerimeter.setFireStationPersons(personFireStationDTO);
+        fireStationPerimeter.setAdultCount(countAdult);
+        fireStationPerimeter.setChildCount(countChild);
         //return fireStationDTO;
-        return null;
+        return fireStationPerimeter;
 
     }
 

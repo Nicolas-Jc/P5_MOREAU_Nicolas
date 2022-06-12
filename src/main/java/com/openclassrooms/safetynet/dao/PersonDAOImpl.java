@@ -56,6 +56,17 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
+    public List<Person> findPersonByFirstNameAndLastName(String firstName, String lastName) {
+        List<Person> listPerson = new ArrayList<>();
+
+        for (Person p : Data.getPersons()) {
+            if ((p.getFirstName().contentEquals(firstName)) && (p.getLastName().contentEquals(lastName)))
+                listPerson.add(p);
+        }
+        return listPerson;
+    }
+
+    @Override
     public Person modifyPerson(Person person) {
         int index = 0;
 

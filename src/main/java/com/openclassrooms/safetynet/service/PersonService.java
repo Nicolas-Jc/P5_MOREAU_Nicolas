@@ -3,10 +3,7 @@ package com.openclassrooms.safetynet.service;
 import com.openclassrooms.safetynet.dao.FireStationDAO;
 import com.openclassrooms.safetynet.dao.MedicalRecordsDAO;
 import com.openclassrooms.safetynet.dao.PersonDAO;
-import com.openclassrooms.safetynet.dto.ChildAlertDTO;
-import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
-import com.openclassrooms.safetynet.dto.FireDTO;
-import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
+import com.openclassrooms.safetynet.dto.*;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
 
@@ -44,6 +41,11 @@ public class PersonService {
     public List<Person> findAll() {
         return personDAO.getAllPersons();
     }
+
+    public List<Person> findPerson(String firstName, String lastName) {
+        return personDAO.findPersonByFirstNameAndLastName(firstName, lastName);
+    }
+
     /*
     public List<Person> findPersonByAddress(String address) {
         return personDAO.findPersonByAdress(address);
@@ -163,6 +165,66 @@ public class PersonService {
         }
         return listPersonInfo;
     }
+
+    public List<InfoPersonDetailedDTO> getPersonByFirstLastName(String firstName, String lastName) {
+
+        List<InfoPersonDetailedDTO> InfoPersonDetailed = new ArrayList<>();
+
+        //List<Person> persons = findPerson(firstName, lastName);
+
+        List<Person> persons = personDAO.findPersonByFirstNameAndLastName(firstName, lastName);
+
+        for (Person p : persons) {
+            MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
+
+            if (medicalRecord != null) {
+                int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
+
+                InfoPersonDetailedDTO infoPerson = new InfoPersonDetailedDTO();
+                infoPerson.setFirstName(p.getFirstName());
+                infoPerson.setLastName(p.getLastName());
+                infoPerson.setAddress(p.getAddress());
+                infoPerson.setAge(age);
+                infoPerson.setEmail(p.getEmail());
+                infoPerson.setMedications(medicalRecord.getMedications());
+                infoPerson.setAllergies(medicalRecord.getAllergies());
+                InfoPersonDetailed.add(infoPerson);
+            }
+        }
+        return InfoPersonDetailed;
+    }
+
+    /*public List<InfoPersonDetailedDTO> getPersonByFirstLastName(String firstName, String lastName) {
+
+        List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
+        List<Person> allPersonInFirstNameLastName = personDAO.
+
+                // Création Liste attendue pour sortie
+                List < InfoPersonDetailedDTO > listPersonDetailedInfo = new ArrayList<>();
+
+        for (Person p : allPersonInAdress) {
+            MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
+
+            if (medicalRecord != null) {
+                int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
+
+                // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
+                //if (age <= 18) {
+                FireDTO personInfo = new FireDTO();
+                personInfo.setFirstName(p.getFirstName());
+                personInfo.setLastName(p.getLastName());
+                personInfo.setPhone(p.getPhone());
+                personInfo.setAge(age);
+                personInfo.setPhone(p.getPhone());
+                personInfo.setStation(fireStationDAO.getStationByAddress(p.getAddress()));
+                personInfo.setMedications(medicalRecord.getMedications());
+                personInfo.setAllergies(medicalRecord.getAllergies());
+                listPersonDetailedInfo.add(personInfo);
+                //}
+            }
+        }
+        return listPersonDetailedInfo;
+    }*/
 
     public Boolean delete(String firstName, String lastName) {
         return personDAO.deletePerson(firstName, lastName);

@@ -2,16 +2,16 @@ package com.openclassrooms.safetynet.dto;
 
 import java.util.List;
 
-public class FireStationDTO {
-    List<InfoPersonDTO> fireStationPersons;
+public class FireStationPerimeter {
+    List<PersonFireStationDTO> fireStationPersons;
     int adultCount;
     int childCount;
 
-    public List<InfoPersonDTO> getFireStationPersons() {
+    public List<PersonFireStationDTO> getFireStationPersons() {
         return fireStationPersons;
     }
 
-    public void setFireStationPersons(List<InfoPersonDTO> fireStationPersons) {
+    public void setFireStationPersons(List<PersonFireStationDTO> fireStationPersons) {
         this.fireStationPersons = fireStationPersons;
     }
 
