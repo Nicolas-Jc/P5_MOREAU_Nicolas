@@ -55,4 +55,20 @@ public class PersonDAOImpl implements PersonDAO {
 
     }
 
+    @Override
+    public Person modifyPerson(Person person) {
+        int index = 0;
+
+        for (Person p : Data.getPersons()) {
+            if (p.getFirstName().contentEquals(person.getFirstName())
+                    && p.getLastName().contentEquals(person.getLastName())) {
+                Data.getPersons().set(index, person);
+                return person;
+            }
+            index++;
+        }
+
+        return null;
+    }
+
 }

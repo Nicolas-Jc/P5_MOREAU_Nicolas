@@ -15,4 +15,8 @@ public interface MedicalRecordsDAO {
     MedicalRecord getMedicalRecords(String firstName, String lastName);
 
     Boolean deleteMedicalRecords(String firstName, String lastName);
+
+    MedicalRecord modifyMedicalRecords(MedicalRecord medicalRecord);
+
+    MedicalRecord addMedicalRecords(MedicalRecord medicalRecord);
 }

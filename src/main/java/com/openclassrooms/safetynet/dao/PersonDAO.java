@@ -15,4 +15,6 @@ public interface PersonDAO {
     Boolean deletePerson(String firstName, String lastName);
 
     Person addPerson(Person person);
+
+    Person modifyPerson(Person person);
 }

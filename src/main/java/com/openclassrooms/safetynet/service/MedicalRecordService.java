@@ -26,8 +26,17 @@ public class MedicalRecordService {
     }
 
     public Boolean delete(String firstName, String lastName) {
-
         return medicalRecordsDAO.deleteMedicalRecords(firstName, lastName);
+    }
+
+    public MedicalRecord modify(MedicalRecord medicalRecord) {
+        return medicalRecordsDAO.modifyMedicalRecords(medicalRecord);
+    }
+
+    public MedicalRecord add(MedicalRecord medicalRecord) {
+        //if (personService.findPerson(medicalRecord.getFirstName(), medicalRecord.getLastName()) != null) {
+        return medicalRecordsDAO.addMedicalRecords(medicalRecord);
+
     }
 
 }

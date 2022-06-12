@@ -141,9 +141,12 @@ public class PersonService {
         return personDAO.deletePerson(firstName, lastName);
     }
 
-
     public Person add(Person person) {
         return personDAO.addPerson(person);
+    }
+
+    public Person modify(Person person) {
+        return personDAO.modifyPerson(person);
     }
 
       /*

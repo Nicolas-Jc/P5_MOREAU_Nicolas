@@ -39,6 +39,20 @@ public class FireStationService {
         return fireStationDAO.getAllFireStations();
     }
 
+
+    public List<FireStation> delete(FireStation fireStation) {
+        return fireStationDAO.deleteFireStation(fireStation);
+    }
+
+    public FireStation modify(FireStation fireStation) {
+        return fireStationDAO.modifyFireStation(fireStation);
+
+    }
+
+    public FireStation add(FireStation fireStation) {
+        return fireStationDAO.addFireStation(fireStation);
+    }
+
     public FireStationDTO fireStationPersonsScope(String station) {
 
         // Format de fichier attendu en sortie (constituée d'une Liste et 2 compteurs)

@@ -41,4 +41,31 @@ public class MedicalRecordController {
         return null;
     }
 
+    @PutMapping
+    public MedicalRecord modifyMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+
+        MedicalRecord medicalRecordModified = medicalRecordService.modify(medicalRecord);
+
+        if (medicalRecordModified == null) {
+            logger.error("modifyMedicalRecord KO");
+            //throw new MedicalRecordNotFound(medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
+        }
+        logger.info("modified medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
+        return medicalRecordModified;
+
+    }
+
+    @PostMapping
+    public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+
+        MedicalRecord medicalRecordAdded = medicalRecordService.add(medicalRecord);
+        if (medicalRecordAdded == null) {
+            logger.error("addMedicalRecord KO");
+            //throw new MedicalRecordPersonNotFound(medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
+        }
+        logger.info("created medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
+        return medicalRecordAdded;
+
+    }
+
 }

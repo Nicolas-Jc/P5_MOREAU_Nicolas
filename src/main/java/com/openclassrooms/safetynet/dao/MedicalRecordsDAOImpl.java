@@ -54,5 +54,26 @@ public class MedicalRecordsDAOImpl implements MedicalRecordsDAO {
         return false;
     }
 
+    @Override
+    public MedicalRecord modifyMedicalRecords(MedicalRecord medicalRecord) {
+        int key = 0;
+
+        for (MedicalRecord m : Data.getMedicalRecords()) {
+            if (m.getFirstName().contentEquals(medicalRecord.getFirstName())
+                    && m.getLastName().contentEquals(medicalRecord.getLastName())) {
+                Data.getMedicalRecords().set(key, medicalRecord);
+                return medicalRecord;
+            }
+            key++;
+        }
+
+        return null;
+    }
+
+    @Override
+    public MedicalRecord addMedicalRecords(MedicalRecord medicalRecord) {
+        Data.getMedicalRecords().add(medicalRecord);
+        return medicalRecord;
+    }
 
 }

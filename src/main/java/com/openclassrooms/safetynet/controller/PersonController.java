@@ -49,4 +49,17 @@ public class PersonController {
         return personAdded;
     }
 
+    @PutMapping
+    public Person modifyPerson(@RequestBody Person person) {
+
+        Person personModified = personService.modify(person);
+
+        if (personModified == null) {
+            logger.error("modifyPerson : Not Found");
+            //throw new PersonNotFound(person.toString());
+        }
+        logger.info("modifyPerson : OK");
+        return personModified;
+    }
+
 }
