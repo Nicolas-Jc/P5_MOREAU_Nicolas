@@ -5,6 +5,7 @@ import com.openclassrooms.safetynet.dao.MedicalRecordsDAO;
 import com.openclassrooms.safetynet.dao.PersonDAO;
 import com.openclassrooms.safetynet.dto.ChildAlertDTO;
 import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
+import com.openclassrooms.safetynet.dto.FireDTO;
 import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
@@ -45,7 +46,7 @@ public class PersonService {
         return personDAO.findPersonByAdress(address);
     }*/
 
-    // 1. URL "CommunityEmail"
+    // 1. URL "CommunityEmail" - EN
     // Cette url doit retourner une liste des adresses mail de tous les habitants de la ville saisie.
     public List<CommunityEmailDTO> getCommunityEmailByCity(String city) {
         // Création Liste vide pour sortie
@@ -113,10 +114,10 @@ public class PersonService {
         // Création Liste attendue pour sortie
         List<ChildAlertDTO> listChildInfo = new ArrayList<>();
 
-        // Boucle sur la liste des personnes résidant à l'adresse saisie
+        // Boucle sur la liste des personnes résidant à l'adresse saisie avec pour clé de recherche
+        // Nom - Prénom
         for (Person p : allPersonInAdress) {
             MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
-
 
             if (medicalRecord != null) {
                 int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
@@ -135,4 +136,35 @@ public class PersonService {
         }
         return listChildInfo;
     }
+
+    public Boolean delete(String firstName, String lastName) {
+        return personDAO.deletePerson(firstName, lastName);
+    }
+
+
+    public Person add(Person person) {
+        return personDAO.addPerson(person);
+    }
+
+      /*
+    public List<FireDTO> getTotalInformationPerson(Person person) {
+
+        InfoPersonFull result = new InfoPersonFull();
+        result.setFirstName(person.getFirstName());
+        result.setLastName(person.getLastName());
+        result.setAddress(person.getAddress());
+        result.setPhone(person.getPhone());
+        result.setEmail(person.getEmail());
+        result.setStation(fireStationService.stationNumber(person.getAddress()));
+
+        MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(person.getFirstName(),
+                person.getLastName());
+        if (medicalRecord != null) {
+            result.setAge(serviceUtil.calculateAge(medicalRecord.getBirthdate()));
+            result.setAllergies(medicalRecord.getAllergies());
+            result.setMedications(medicalRecord.getMedications());
+        }
+
+        return result;
+    }*/
 }

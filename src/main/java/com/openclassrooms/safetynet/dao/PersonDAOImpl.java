@@ -35,8 +35,24 @@ public class PersonDAOImpl implements PersonDAO {
             }
         }
         return listPersonByAddress;
-
     }
 
+    @Override
+    public Boolean deletePerson(String firstName, String lastName) {
+        for (Person p : Data.getPersons()) {
+            if (p.getFirstName().contentEquals(firstName) && p.getLastName().contentEquals(lastName)) {
+                Data.getPersons().remove(p);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Person addPerson(Person person) {
+        Data.getPersons().add(person);
+        return person;
+
+    }
 
 }

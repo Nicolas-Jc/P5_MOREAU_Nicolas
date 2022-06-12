@@ -24,8 +24,10 @@ public class MedicalRecordService {
     public MedicalRecord findMedicalRecord(String firstName, String lastName) {
         return medicalRecordsDAO.getMedicalRecords(firstName, lastName);
     }
-    /*
-    public MedicalRecord findMedicalRecord(String firstName, String lastName) {
-        return MedicalRecordsDAO.getMedicalRecords(firstName, lastName);
-    }*/
+
+    public Boolean delete(String firstName, String lastName) {
+
+        return medicalRecordsDAO.deleteMedicalRecords(firstName, lastName);
+    }
+
 }
