@@ -1,14 +1,12 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.FireStationPerimeter;
-import com.openclassrooms.safetynet.dto.PersonFireStationDTO;
 import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.service.FireStationService;
 import com.openclassrooms.safetynet.service.PersonService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +25,11 @@ public class FireStationController {
 
     @GetMapping
     public FireStationPerimeter getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
+
+        if (station.isEmpty()) {
+            logger.error("getFireStationCoverage => station empty !");
+            throw new Exception("station is empty");
+        }
         logger.info("getFireStationCoverage OK");
         return fireStationService.fireStationPersonsScope(station);
     }
@@ -40,8 +43,7 @@ public class FireStationController {
             logger.info("Deleted firestation : " + fireStationDeleted.toString());
             return fireStationDeleted;
         } else {
-            logger.error("removeFireStation : KO");
-            //throw new FireStationNotFound(fireStation.toString());
+            logger.error("deleteFireStation : KO");
             return null;
         }
     }
@@ -55,14 +57,12 @@ public class FireStationController {
             logger.info("Modified firestation : " + fireStationModified.toString());
             return fireStationModified;
         } else {
-            logger.error("Modified firestation : KO");
-            //throw new FireStationNotFound(fireStation.toString());
+            logger.error("modifyFireStation : KO");
             return null;
         }
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public FireStation addFireStation(@RequestBody FireStation fireStation) {
         logger.info("Add firestation : " + fireStation.toString());
 

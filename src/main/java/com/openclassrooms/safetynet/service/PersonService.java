@@ -60,8 +60,6 @@ public class PersonService {
         //List<Person> listPersons = findAll();
         List<Person> listPersons = personDAO.getAllPersons();
 
-        System.out.println("Entree PersonService getCommunityEmail");
-
         // Boucle sur chaque occurence de la liste persons (Fichier entrée)
         for (Person p : listPersons) {
             if (p.getCity().contentEquals(city)) {
@@ -90,8 +88,6 @@ public class PersonService {
         // Récupération de la Liste de toutes les persons du fichier en entrée
         //List<Person> listPersons = findAll();
         List<Person> listPersons = personDAO.getAllPersons();
-
-        System.out.println("Entree PersonService getPhoneAlert");
 
         // Boucle sur chaque occurence de la liste persons (Fichier entrée)
         for (Person p : listPersons) {

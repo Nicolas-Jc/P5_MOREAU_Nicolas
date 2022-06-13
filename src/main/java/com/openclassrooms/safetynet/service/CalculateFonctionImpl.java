@@ -17,7 +17,7 @@ public class CalculateFonctionImpl implements CalculateFonction {
 
     @Autowired
     MedicalRecordService medicalRecordService;
-    
+
     @Override
     public int calculateAge(Date date) {
         LocalDateTime localDateTime = LocalDateTime.now();
@@ -25,9 +25,7 @@ public class CalculateFonctionImpl implements CalculateFonction {
 
         DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         int d1 = Integer.parseInt(formatter.format(date));
-        System.out.println(d1);
         int d2 = Integer.parseInt(formatter.format(currentDate));
-        System.out.println(d2);
 
         return (d2 - d1) / 10000;
     }

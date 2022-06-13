@@ -9,9 +9,6 @@ import java.util.List;
 
 @Repository
 public class MedicalRecordsDAOImpl implements MedicalRecordsDAO {
-    //private List<MedicalRecord> medicalRecords = new ArrayList<>();
-    //List<MedicalRecord> medicalRecords = new ArrayList<>();
-
 
     @Override
     public List<MedicalRecord> getAllMedicalRecords() {

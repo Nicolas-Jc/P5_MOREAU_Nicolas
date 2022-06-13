@@ -9,26 +9,22 @@ import java.util.List;
 
 @Repository
 public class FireStationDAOImpl implements FireStationDAO {
-    //private List<FireStation> fireStations = new ArrayList<>();
 
     @Override
     public List<FireStation> getAllFireStations() {
-        //return fireStations;
         return Data.getFireStations();
     }
 
     @Override
     public void setAllFireStations(List<FireStation> listFireStations) {
-        //this.fireStations = listFireStations;
         Data.setFireStations(listFireStations);
 
     }
 
     @Override
-    // Fonction qui retourne la liste "adresses" couvertes par un numero de station donné
     public List<String> getFireStationAdressById(String station) {
         List<String> listAddress = new ArrayList<>();
-        // Lecture de la liste des FireStation du fichier d'entre Json
+
         for (FireStation f : Data.getFireStations()) {
             if (f.getStation().equals(station)) {
                 listAddress.add(f.getAddress());
@@ -42,7 +38,7 @@ public class FireStationDAOImpl implements FireStationDAO {
 
         List<FireStation> fireStationsDeleted = new ArrayList<>();
 
-        // delete with address
+        // delete address
         if (fireStation.getStation().isEmpty()) {
             for (FireStation f : Data.getFireStations()) {
                 if (f.getAddress().contentEquals(fireStation.getAddress())) {
@@ -51,7 +47,7 @@ public class FireStationDAOImpl implements FireStationDAO {
             }
         }
 
-        // delete with station
+        // delete station
         if (fireStation.getAddress().isEmpty()) {
             for (FireStation f : Data.getFireStations()) {
                 if (f.getStation().contentEquals(fireStation.getStation())) {
@@ -60,7 +56,7 @@ public class FireStationDAOImpl implements FireStationDAO {
             }
         }
 
-        // delete with station and address
+        // delete station AND address
         if (!fireStation.getAddress().isEmpty() && !fireStation.getStation().isEmpty()) {
             for (FireStation f : Data.getFireStations()) {
                 if ((f.getStation().contentEquals(fireStation.getStation()))

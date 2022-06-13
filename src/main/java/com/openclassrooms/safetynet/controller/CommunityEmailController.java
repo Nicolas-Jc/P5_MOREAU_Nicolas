@@ -18,7 +18,6 @@ public class CommunityEmailController {
     @Autowired
     PersonService personService;
 
-    // ********************* EndPoint No 1 - communityEmail ***************************************
     @GetMapping(value = "/communityEmail")
     public List<CommunityEmailDTO> getCommunityEmail(@RequestParam("city") String city) throws Exception {
 

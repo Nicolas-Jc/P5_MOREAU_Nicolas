@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 public class AllObjectsController {
-
     private static final Logger logger = LogManager.getLogger("AllObjectsController");
 
     @Autowired
@@ -30,16 +29,19 @@ public class AllObjectsController {
 
     @GetMapping("/persons")
     public List<Person> getPerson() {
+        logger.info("getPerson : OK");
         return personService.findAll();
     }
 
     @GetMapping("/medicalrecords")
     public List<MedicalRecord> getMedicalRecords() {
+        logger.info("getMedicalRecords : OK");
         return medicalRecordService.findAll();
     }
 
     @GetMapping("/firestations")
     public List<FireStation> getFireStations() {
+        logger.info("getFireStations : OK");
         return fireStationService.findAll();
     }
 

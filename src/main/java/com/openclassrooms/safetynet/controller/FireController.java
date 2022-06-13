@@ -1,6 +1,5 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.dto.ChildAlertDTO;
 import com.openclassrooms.safetynet.dto.FireDTO;
 import com.openclassrooms.safetynet.service.FireStationService;
 import com.openclassrooms.safetynet.service.PersonService;
@@ -24,10 +23,13 @@ public class FireController {
     @Autowired
     PersonService personService;
 
-    // ********************* EndPoint No 4 - fire ***************************************
     @GetMapping(value = "/fire")
     public List<FireDTO> getFire(@RequestParam("address") String address) throws Exception {
 
+        if (address.isEmpty()) {
+            logger.error("getFire => address empty !");
+            throw new Exception("address is empty");
+        }
         logger.info("getFire : OK");
         return personService.getPersonByAddress(address);
     }

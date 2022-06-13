@@ -82,10 +82,8 @@ public class FireStationService {
                 }
                 if (agePerson <= 18) {
                     countChild++;
-                    System.out.println(countChild);
                 } else {
                     countAdult++;
-                    System.out.println(countAdult);
                 }
                 personFireStationDTO.add(fireStationPersons);
             }
@@ -126,25 +124,27 @@ public class FireStationService {
             floodDTO.setAddress(a);
 
             // 3. Pour chacune des adresses, générérer la Liste des foyers concernés
-            List<FloodPersonDTO> listFloodPerson2 = new ArrayList<>();
+            // Liste de travail intermédiaire
+            List<FloodPersonDTO> listFloodPerson = new ArrayList<>();
+
             for (Person p : allPersonInAdress) {
 
                 MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
-                FloodPersonDTO listFloodPerson = new FloodPersonDTO();
-                listFloodPerson.setFirstName(p.getFirstName());
-                listFloodPerson.setLastName(p.getLastName());
-                listFloodPerson.setPhone(p.getPhone());
+                FloodPersonDTO floodPerson = new FloodPersonDTO();
+                floodPerson.setFirstName(p.getFirstName());
+                floodPerson.setLastName(p.getLastName());
+                floodPerson.setPhone(p.getPhone());
 
                 if (medicalRecord != null) {
                     agePerson = calculateFonction.calculateAge(medicalRecord.getBirthdate());
-                    listFloodPerson.setAge(agePerson);
-                    listFloodPerson.setMedications(medicalRecord.getMedications());
-                    listFloodPerson.setAllergies(medicalRecord.getAllergies());
+                    floodPerson.setAge(agePerson);
+                    floodPerson.setMedications(medicalRecord.getMedications());
+                    floodPerson.setAllergies(medicalRecord.getAllergies());
                 }
-                listFloodPerson2.add(listFloodPerson);
+                listFloodPerson.add(floodPerson);
             }
 
-            floodDTO.setFloodListPersons(listFloodPerson2);
+            floodDTO.setFloodListPersons(listFloodPerson);
             result.add(floodDTO);
         }
         return result;

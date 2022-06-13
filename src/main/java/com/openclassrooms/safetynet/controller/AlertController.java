@@ -14,24 +14,29 @@ import java.util.List;
 
 @RestController
 public class AlertController {
-
     private static final Logger logger = LogManager.getLogger("AlertController");
 
     @Autowired
     PersonService personService;
 
-    // ********************* EndPoint No 2 - phoneAlert ***************************************
     @GetMapping(value = "/phoneAlert")
     public List<PhoneAlertDTO> getPhoneAlert(@RequestParam("firestation") String station) throws Exception {
 
+        if (station.isEmpty()) {
+            logger.error("getPhoneAlert => station empty !");
+            throw new Exception("station is empty");
+        }
         logger.info("getPhoneAlert : OK");
         return personService.getPhoneAlertByFirestation(station);
     }
 
-    // ********************* EndPoint No 3 - childAlert ***************************************
     @GetMapping(value = "/childAlert")
     public List<ChildAlertDTO> getChildAlert(@RequestParam("address") String address) throws Exception {
 
+        if (address.isEmpty()) {
+            logger.error("getChildAlert => address empty !");
+            throw new Exception("address is empty");
+        }
         logger.info("getChildAlert : OK");
         return personService.getChildAlertByAddress(address);
     }
