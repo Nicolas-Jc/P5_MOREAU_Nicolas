@@ -76,7 +76,6 @@ public class FireStationService {
                 fireStationPersons.setLastName(p.getLastName());
                 fireStationPersons.setAddress(p.getAddress());
                 fireStationPersons.setPhone(p.getPhone());
-                //fireStationDTO.add(fireStationPersons);
 
                 if (medicalRecord != null) {
                     agePerson = calculateFonction.calculateAge(medicalRecord.getBirthdate());
@@ -90,27 +89,64 @@ public class FireStationService {
                 }
                 personFireStationDTO.add(fireStationPersons);
             }
-            // Liste des personnes (Sans les compteurs)
-            //fireStationPersons.add(fireStationPersons);
-
         }
-        //fireStationDTO.add(fireStationPersons);
-
-        // Mise en forme Liste final : Liste personnes + 2 compteurs
-        /*fireStationDTO.setFireStationPersons(fireStationPersons);
-        fireStationDTO.setAdultCount(countAdult);
-        fireStationDTO.setChildCount(countChild);*/
 
         fireStationPerimeter.setFireStationPersons(personFireStationDTO);
         fireStationPerimeter.setAdultCount(countAdult);
         fireStationPerimeter.setChildCount(countChild);
-        //return fireStationDTO;
+
         return fireStationPerimeter;
 
     }
 
-    /*public String stationNumber(String address) {
-        return fireStationDAO.getStationByAddress(address);
-    }*/
 
+    public List<FloodDTO> getFloodListByStationsList(List<String> stations) {
+
+        int agePerson = 0;
+
+        // Format fichier attendu en sortie
+        List<FloodDTO> result = new ArrayList<>();
+
+        // Liste des addresses à compléter
+        List<String> adresses = new ArrayList<>();
+
+        // 1. Boucle sur chacune des No de stations de la Liste
+        // et récupération des adresses associés pour chacun
+        for (String s : stations) {
+            List<String> adressesForStation = new ArrayList<>();
+            adressesForStation = fireStationDAO.getFireStationAdressById(s);
+            adresses.addAll(adressesForStation);
+        }
+
+        // 2. Boucle sur chacune des adresses et recherche des foyers concernés par adresse
+        for (String a : adresses) {
+            List<Person> allPersonInAdress = personDAO.findPersonByAdress(a);
+
+            FloodDTO floodDTO = new FloodDTO();
+            floodDTO.setAddress(a);
+
+            // 3. Pour chacune des adresses, générérer la Liste des foyers concernés
+            List<FloodPersonDTO> listFloodPerson2 = new ArrayList<>();
+            for (Person p : allPersonInAdress) {
+
+                MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
+                FloodPersonDTO listFloodPerson = new FloodPersonDTO();
+                listFloodPerson.setFirstName(p.getFirstName());
+                listFloodPerson.setLastName(p.getLastName());
+                listFloodPerson.setPhone(p.getPhone());
+
+                if (medicalRecord != null) {
+                    agePerson = calculateFonction.calculateAge(medicalRecord.getBirthdate());
+                    listFloodPerson.setAge(agePerson);
+                    listFloodPerson.setMedications(medicalRecord.getMedications());
+                    listFloodPerson.setAllergies(medicalRecord.getAllergies());
+                }
+                listFloodPerson2.add(listFloodPerson);
+            }
+
+            floodDTO.setFloodListPersons(listFloodPerson2);
+            result.add(floodDTO);
+        }
+        return result;
+    }
 }
