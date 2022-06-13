@@ -1,7 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
-import com.openclassrooms.safetynet.service.PersonService;
+import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class CommunityEmailController {
 
     private static final Logger logger = LogManager.getLogger("CommunityEmailController");
     @Autowired
-    PersonService personService;
+    PersonServiceImpl personService;
 
     @GetMapping(value = "/communityEmail")
     public List<CommunityEmailDTO> getCommunityEmail(@RequestParam("city") String city) throws Exception {

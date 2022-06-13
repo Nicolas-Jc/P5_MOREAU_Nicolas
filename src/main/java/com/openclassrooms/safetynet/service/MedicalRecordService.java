@@ -1,38 +1,17 @@
 package com.openclassrooms.safetynet.service;
 
-
-import com.openclassrooms.safetynet.dao.MedicalRecordsDAO;
 import com.openclassrooms.safetynet.model.MedicalRecord;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class MedicalRecordService {
-    @Autowired
-    private MedicalRecordsDAO medicalRecordsDAO;
+public interface MedicalRecordService {
+    List<MedicalRecord> findAll();
 
+    MedicalRecord findMedicalRecord(String firstName, String lastName);
 
-    public List<MedicalRecord> findAll() {
-        return medicalRecordsDAO.getAllMedicalRecords();
-    }
+    Boolean delete(String firstName, String lastName);
 
-    public MedicalRecord findMedicalRecord(String firstName, String lastName) {
-        return medicalRecordsDAO.getMedicalRecords(firstName, lastName);
-    }
+    MedicalRecord modify(MedicalRecord medicalRecord);
 
-    public Boolean delete(String firstName, String lastName) {
-        return medicalRecordsDAO.deleteMedicalRecords(firstName, lastName);
-    }
-
-    public MedicalRecord modify(MedicalRecord medicalRecord) {
-        return medicalRecordsDAO.modifyMedicalRecords(medicalRecord);
-    }
-
-    public MedicalRecord add(MedicalRecord medicalRecord) {
-        return medicalRecordsDAO.addMedicalRecords(medicalRecord);
-
-    }
-
+    MedicalRecord add(MedicalRecord medicalRecord);
 }

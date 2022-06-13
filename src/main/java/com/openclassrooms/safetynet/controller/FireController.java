@@ -1,8 +1,8 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.FireDTO;
-import com.openclassrooms.safetynet.service.FireStationService;
-import com.openclassrooms.safetynet.service.PersonService;
+import com.openclassrooms.safetynet.service.FireStationServiceImpl;
+import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,10 +18,10 @@ public class FireController {
     private static final Logger logger = LogManager.getLogger("FireController");
 
     @Autowired
-    FireStationService fireStationService;
+    FireStationServiceImpl fireStationService;
 
     @Autowired
-    PersonService personService;
+    PersonServiceImpl personService;
 
     @GetMapping(value = "/fire")
     public List<FireDTO> getFire(@RequestParam("address") String address) throws Exception {

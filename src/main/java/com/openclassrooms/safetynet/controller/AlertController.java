@@ -2,7 +2,7 @@ package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.ChildAlertDTO;
 import com.openclassrooms.safetynet.dto.PhoneAlertDTO;
-import com.openclassrooms.safetynet.service.PersonService;
+import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class AlertController {
     private static final Logger logger = LogManager.getLogger("AlertController");
 
     @Autowired
-    PersonService personService;
+    PersonServiceImpl personService;
 
     @GetMapping(value = "/phoneAlert")
     public List<PhoneAlertDTO> getPhoneAlert(@RequestParam("firestation") String station) throws Exception {

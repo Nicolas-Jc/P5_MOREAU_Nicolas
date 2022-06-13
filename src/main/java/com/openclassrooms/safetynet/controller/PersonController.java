@@ -2,7 +2,7 @@ package com.openclassrooms.safetynet.controller;
 
 
 import com.openclassrooms.safetynet.model.Person;
-import com.openclassrooms.safetynet.service.PersonService;
+import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class PersonController {
     private static final Logger logger = LogManager.getLogger("PersonController");
 
     @Autowired
-    PersonService personService;
+    PersonServiceImpl personService;
 
     @DeleteMapping
     public String deletePerson(@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName) {

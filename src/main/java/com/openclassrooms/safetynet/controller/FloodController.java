@@ -2,7 +2,7 @@ package com.openclassrooms.safetynet.controller;
 
 
 import com.openclassrooms.safetynet.dto.FloodDTO;
-import com.openclassrooms.safetynet.service.FireStationService;
+import com.openclassrooms.safetynet.service.FireStationServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class FloodController {
     private static final Logger logger = LogManager.getLogger("FloodController");
 
     @Autowired
-    FireStationService fireStationService;
+    FireStationServiceImpl fireStationService;
 
     @GetMapping(value = "/flood")
     public List<FloodDTO> getFloodList(@RequestParam("stations") List<String> stations) throws Exception {

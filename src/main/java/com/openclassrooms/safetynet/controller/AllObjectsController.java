@@ -3,9 +3,9 @@ package com.openclassrooms.safetynet.controller;
 import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.model.MedicalRecord;
 import com.openclassrooms.safetynet.model.Person;
-import com.openclassrooms.safetynet.service.FireStationService;
-import com.openclassrooms.safetynet.service.MedicalRecordService;
-import com.openclassrooms.safetynet.service.PersonService;
+import com.openclassrooms.safetynet.service.FireStationServiceImpl;
+import com.openclassrooms.safetynet.service.MedicalRecordServiceImpl;
+import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ public class AllObjectsController {
     private static final Logger logger = LogManager.getLogger("AllObjectsController");
 
     @Autowired
-    PersonService personService;
+    PersonServiceImpl personService;
 
     @Autowired
-    MedicalRecordService medicalRecordService;
+    MedicalRecordServiceImpl medicalRecordService;
 
     @Autowired
-    FireStationService fireStationService;
+    FireStationServiceImpl fireStationService;
 
     @GetMapping("/persons")
     public List<Person> getPerson() {

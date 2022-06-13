@@ -1,7 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.model.MedicalRecord;
-import com.openclassrooms.safetynet.service.MedicalRecordService;
+import com.openclassrooms.safetynet.service.MedicalRecordServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class MedicalRecordController {
     private static final Logger logger = LogManager.getLogger("MedicalRecordController");
 
     @Autowired
-    MedicalRecordService medicalRecordService;
+    MedicalRecordServiceImpl medicalRecordService;
 
     @DeleteMapping
     public String deleteMedicalRecord(@RequestParam("firstName") String firstName,
