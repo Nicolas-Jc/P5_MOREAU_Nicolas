@@ -13,10 +13,7 @@ public class MedicalRecordService {
     @Autowired
     private MedicalRecordsDAO medicalRecordsDAO;
 
-    //@Autowired
-    //private PersonService personService;
 
-    //@Override
     public List<MedicalRecord> findAll() {
         return medicalRecordsDAO.getAllMedicalRecords();
     }
@@ -34,7 +31,6 @@ public class MedicalRecordService {
     }
 
     public MedicalRecord add(MedicalRecord medicalRecord) {
-        //if (personService.findPerson(medicalRecord.getFirstName(), medicalRecord.getLastName()) != null) {
         return medicalRecordsDAO.addMedicalRecords(medicalRecord);
 
     }

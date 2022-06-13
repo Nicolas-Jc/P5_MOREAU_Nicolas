@@ -3,10 +3,6 @@ package com.openclassrooms.safetynet.dto;
 public class PhoneAlertDTO {
     String phone;
 
-    /*public PhoneAlertDTO(String phone) {
-        this.phone = phone;
-    }*/
-
     public String getPhone() {
         return phone;
     }

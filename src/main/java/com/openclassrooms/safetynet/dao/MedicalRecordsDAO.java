@@ -11,7 +11,6 @@ public interface MedicalRecordsDAO {
 
     public void setAllMedicalRecords(List<MedicalRecord> listMedicalRecord);
 
-
     MedicalRecord getMedicalRecords(String firstName, String lastName);
 
     Boolean deleteMedicalRecords(String firstName, String lastName);

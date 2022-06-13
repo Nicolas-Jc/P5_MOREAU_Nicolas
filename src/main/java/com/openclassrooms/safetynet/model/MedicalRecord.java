@@ -9,8 +9,7 @@ public class MedicalRecord {
 
     private String firstName;
     private String lastName;
-    //Pour débloquer bug "Cannot parse date "03/06/1984":
-    // not compatible with any of standard forms ("yyyy-MM-dd
+
     @JsonFormat(pattern = "dd/MM/YYYY")
     private Date birthdate;
     private List<String> medications;

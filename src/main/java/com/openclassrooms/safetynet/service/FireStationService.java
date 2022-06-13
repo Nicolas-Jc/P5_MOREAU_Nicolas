@@ -94,7 +94,6 @@ public class FireStationService {
         fireStationPerimeter.setChildCount(countChild);
 
         return fireStationPerimeter;
-
     }
 
 

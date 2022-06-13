@@ -10,11 +10,8 @@ import com.openclassrooms.safetynet.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,18 +43,11 @@ public class PersonService {
         return personDAO.findPersonByFirstNameAndLastName(firstName, lastName);
     }
 
-    /*
-    public List<Person> findPersonByAddress(String address) {
-        return personDAO.findPersonByAdress(address);
-    }*/
 
-    // 1. URL "CommunityEmail" - EN
-    // Cette url doit retourner une liste des adresses mail de tous les habitants de la ville saisie.
     public List<CommunityEmailDTO> getCommunityEmailByCity(String city) {
         // Création Liste vide pour sortie
         List<CommunityEmailDTO> listEmailInfo = new ArrayList<>();
         // Récupération de la Liste de toutes les persons du fichier en entrée
-        //List<Person> listPersons = findAll();
         List<Person> listPersons = personDAO.getAllPersons();
 
         // Boucle sur chaque occurence de la liste persons (Fichier entrée)
@@ -74,10 +64,6 @@ public class PersonService {
         return listEmailInfo;
     }
 
-    // 2. URL "PhoneAlert"
-    // Cette url doit retourner au controller une liste des numéros de téléphone des résidents desservis
-    // par le numero de caserne de pompiers saisi.
-    // Nous l'utiliserons pour envoyer des messages texte d'urgence à des foyers spécifiques.
     public List<PhoneAlertDTO> getPhoneAlertByFirestation(String station) {
 
         // Liste des différentes adresses desservies par le No de station dans le Json Entree
@@ -102,7 +88,6 @@ public class PersonService {
 
     }
 
-    // URL No.3 "ChildAlert"
     public List<ChildAlertDTO> getChildAlertByAddress(String address) {
 
         List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
@@ -116,7 +101,6 @@ public class PersonService {
             if (medicalRecord != null) {
                 int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
 
-                // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
                 if (age <= 18) {
                     ChildAlertDTO childInfo = new ChildAlertDTO();
                     childInfo.setFirstName(p.getFirstName());
@@ -130,7 +114,6 @@ public class PersonService {
         return listChildInfo;
     }
 
-    // URL No.4 "Fire"
     public List<FireDTO> getPersonByAddress(String address) {
 
         List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
@@ -144,8 +127,6 @@ public class PersonService {
             if (medicalRecord != null) {
                 int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
 
-                // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
-                //if (age <= 18) {
                 FireDTO personInfo = new FireDTO();
                 personInfo.setFirstName(p.getFirstName());
                 personInfo.setLastName(p.getLastName());
@@ -156,7 +137,6 @@ public class PersonService {
                 personInfo.setMedications(medicalRecord.getMedications());
                 personInfo.setAllergies(medicalRecord.getAllergies());
                 listPersonInfo.add(personInfo);
-                //}
             }
         }
         return listPersonInfo;
@@ -165,8 +145,6 @@ public class PersonService {
     public List<InfoPersonDetailedDTO> getPersonByFirstLastName(String firstName, String lastName) {
 
         List<InfoPersonDetailedDTO> InfoPersonDetailed = new ArrayList<>();
-
-        //List<Person> persons = findPerson(firstName, lastName);
 
         List<Person> persons = personDAO.findPersonByFirstNameAndLastName(firstName, lastName);
 
@@ -190,38 +168,6 @@ public class PersonService {
         return InfoPersonDetailed;
     }
 
-    /*public List<InfoPersonDetailedDTO> getPersonByFirstLastName(String firstName, String lastName) {
-
-        List<Person> allPersonInAdress = personDAO.findPersonByAdress(address);
-        List<Person> allPersonInFirstNameLastName = personDAO.
-
-                // Création Liste attendue pour sortie
-                List < InfoPersonDetailedDTO > listPersonDetailedInfo = new ArrayList<>();
-
-        for (Person p : allPersonInAdress) {
-            MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(p.getFirstName(), p.getLastName());
-
-            if (medicalRecord != null) {
-                int age = calculateFonction.calculateAge(medicalRecord.getBirthdate());
-
-                // Test s'il s'agit d'un enfant et génération liste de sortie avec membres famille
-                //if (age <= 18) {
-                FireDTO personInfo = new FireDTO();
-                personInfo.setFirstName(p.getFirstName());
-                personInfo.setLastName(p.getLastName());
-                personInfo.setPhone(p.getPhone());
-                personInfo.setAge(age);
-                personInfo.setPhone(p.getPhone());
-                personInfo.setStation(fireStationDAO.getStationByAddress(p.getAddress()));
-                personInfo.setMedications(medicalRecord.getMedications());
-                personInfo.setAllergies(medicalRecord.getAllergies());
-                listPersonDetailedInfo.add(personInfo);
-                //}
-            }
-        }
-        return listPersonDetailedInfo;
-    }*/
-
     public Boolean delete(String firstName, String lastName) {
         return personDAO.deletePerson(firstName, lastName);
     }
@@ -234,25 +180,4 @@ public class PersonService {
         return personDAO.modifyPerson(person);
     }
 
-      /*
-    public List<FireDTO> getTotalInformationPerson(Person person) {
-
-        InfoPersonFull result = new InfoPersonFull();
-        result.setFirstName(person.getFirstName());
-        result.setLastName(person.getLastName());
-        result.setAddress(person.getAddress());
-        result.setPhone(person.getPhone());
-        result.setEmail(person.getEmail());
-        result.setStation(fireStationService.stationNumber(person.getAddress()));
-
-        MedicalRecord medicalRecord = medicalRecordService.findMedicalRecord(person.getFirstName(),
-                person.getLastName());
-        if (medicalRecord != null) {
-            result.setAge(serviceUtil.calculateAge(medicalRecord.getBirthdate()));
-            result.setAllergies(medicalRecord.getAllergies());
-            result.setMedications(medicalRecord.getMedications());
-        }
-
-        return result;
-    }*/
 }
