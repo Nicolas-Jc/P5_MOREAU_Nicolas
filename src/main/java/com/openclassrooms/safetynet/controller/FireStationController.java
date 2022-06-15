@@ -1,6 +1,6 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.dto.FireStationPerimeter;
+import com.openclassrooms.safetynet.dto.FireStationPerimeterDTO;
 import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.service.FireStationServiceImpl;
 import com.openclassrooms.safetynet.service.PersonServiceImpl;
@@ -24,7 +24,7 @@ public class FireStationController {
     PersonServiceImpl personService;
 
     @GetMapping
-    public FireStationPerimeter getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
+    public FireStationPerimeterDTO getFireStationCoverage(@RequestParam("stationNumber") String station) throws Exception {
 
         if (station.isEmpty()) {
             logger.error("getFireStationCoverage => station empty !");

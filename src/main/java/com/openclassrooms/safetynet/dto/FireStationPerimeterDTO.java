@@ -2,7 +2,7 @@ package com.openclassrooms.safetynet.dto;
 
 import java.util.List;
 
-public class FireStationPerimeter {
+public class FireStationPerimeterDTO {
     List<PersonFireStationDTO> fireStationPersons;
     int adultCount;
     int childCount;

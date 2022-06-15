@@ -51,10 +51,10 @@ public class FireStationServiceImpl implements FireStationService {
     }
 
     @Override
-    public FireStationPerimeter fireStationPersonsScope(String station) {
+    public FireStationPerimeterDTO fireStationPersonsScope(String station) {
 
         // Liste Attendue en sortie avec les 2 compteurs
-        FireStationPerimeter fireStationPerimeter = new FireStationPerimeter();
+        FireStationPerimeterDTO fireStationPerimeter = new FireStationPerimeterDTO();
 
         // Liste attendue en sortie SANS les compteurs
         List<PersonFireStationDTO> personFireStationDTO = new ArrayList<>();

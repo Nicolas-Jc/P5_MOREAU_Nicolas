@@ -1,6 +1,6 @@
 package com.openclassrooms.safetynet.service;
 
-import com.openclassrooms.safetynet.dto.FireStationPerimeter;
+import com.openclassrooms.safetynet.dto.FireStationPerimeterDTO;
 import com.openclassrooms.safetynet.dto.FloodDTO;
 import com.openclassrooms.safetynet.model.FireStation;
 
@@ -15,7 +15,7 @@ public interface FireStationService {
 
     FireStation add(FireStation fireStation);
 
-    FireStationPerimeter fireStationPersonsScope(String station);
+    FireStationPerimeterDTO fireStationPersonsScope(String station);
 
     List<FloodDTO> getFloodListByStationsList(List<String> stations);
 }

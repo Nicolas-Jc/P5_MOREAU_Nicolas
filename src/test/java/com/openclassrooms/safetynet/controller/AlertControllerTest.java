@@ -46,7 +46,8 @@ public class AlertControllerTest {
 
         // WHEN,THEN
         mockMvc.perform(get("/childAlert?address=adresstest")
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$..firstName").value("testFirstName"))
                 .andExpect(jsonPath("$..lastName").value("testLastName"))
                 .andExpect(jsonPath("$..age").value(12));
@@ -65,7 +66,8 @@ public class AlertControllerTest {
 
         // WHEN //THEN
         mockMvc.perform(get("/phoneAlert?firestation=1")
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$..phone").value("phonetest"));
     }
 
