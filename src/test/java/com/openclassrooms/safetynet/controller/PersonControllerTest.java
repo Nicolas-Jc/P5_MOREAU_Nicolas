@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.openclassrooms.safetynet.constants.JsonConstants.*;
 import static com.openclassrooms.safetynet.controller.FireStationControllerTest.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -38,14 +39,6 @@ public class PersonControllerTest {
 
     @MockBean
     private Person person;
-
-    private static final String FIRST_NAME = "FirstNameTest";
-    private static final String LAST_NAME = "LastNameTest";
-    private static final String ADDRESS = "99 Heaven St.";
-    private static final String CITY = "City";
-    private static final String ZIP = "99999";
-    private static final String PHONE = "999-999-9999";
-    private static final String EMAIL = "email@test.fr";
 
     @BeforeEach
     public void beforeEach() {

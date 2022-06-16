@@ -3,10 +3,9 @@ package com.openclassrooms.safetynet.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetynet.dto.FireStationPerimeterDTO;
 import com.openclassrooms.safetynet.model.FireStation;
-import com.openclassrooms.safetynet.service.FireStationService;
+
 import com.openclassrooms.safetynet.service.FireStationServiceImpl;
-import com.openclassrooms.safetynet.service.MedicalRecordServiceImpl;
-import com.openclassrooms.safetynet.service.PersonServiceImpl;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.openclassrooms.safetynet.constants.JsonConstants.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -44,19 +44,19 @@ public class FireStationControllerTest {
 
         //GIVEN :
         fireStation = new FireStation();
-        fireStation.setStation("77");
-        fireStation.setAddress("addressadded");
+        fireStation.setStation(STATION);
+        fireStation.setAddress(ADDRESS);
         Mockito.when(fireStationService.add(any(FireStation.class))).thenReturn(fireStation);
 
         //WHEN
         // THEN
         mockMvc.perform(post("/firestation")
-                        .content(asJsonString(new FireStation("stationtest", "addresstest")))
+                        .content(asJsonString(new FireStation(ADDRESS, STATION)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.station").value("77"))
-                .andExpect(jsonPath("$.address").value("addressadded"));
+                .andExpect(jsonPath("$.station").value(STATION))
+                .andExpect(jsonPath("$.address").value(ADDRESS));
 
     }
 
@@ -85,8 +85,8 @@ public class FireStationControllerTest {
 
         //GIVEN :
         fireStation = new FireStation();
-        fireStation.setAddress("addresstest");
-        fireStation.setStation("99");
+        fireStation.setAddress(ADDRESS);
+        fireStation.setStation(STATION);
         List<FireStation> listFireStation = new ArrayList<>();
         listFireStation.add(fireStation);
         Mockito.when(fireStationService.delete(any(FireStation.class))).thenReturn(listFireStation);
@@ -98,8 +98,8 @@ public class FireStationControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$..station").value("99"))
-                .andExpect(jsonPath("$..address").value("addresstest"));
+                .andExpect(jsonPath("$..station").value(STATION))
+                .andExpect(jsonPath("$..address").value(ADDRESS));
 
     }
 
@@ -108,19 +108,19 @@ public class FireStationControllerTest {
 
         //GIVEN :
         fireStation = new FireStation();
-        fireStation.setStation("88");
-        fireStation.setAddress("addressmodified");
+        fireStation.setStation(STATION);
+        fireStation.setAddress(ADDRESS);
         Mockito.when(fireStationService.modify(any(FireStation.class))).thenReturn(fireStation);
 
         //WHEN
         // THEN
         mockMvc.perform(put("/firestation")
-                        .content(asJsonString(new FireStation("stationtest", "addresstest")))
+                        .content(asJsonString(new FireStation(ADDRESS, STATION)))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.station").value("88"))
-                .andExpect(jsonPath("$.address").value("addressmodified"));
+                .andExpect(jsonPath("$.station").value(STATION))
+                .andExpect(jsonPath("$.address").value(ADDRESS));
 
     }
 

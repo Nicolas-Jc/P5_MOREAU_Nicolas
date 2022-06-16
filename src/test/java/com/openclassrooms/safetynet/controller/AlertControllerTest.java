@@ -14,6 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static com.openclassrooms.safetynet.constants.JsonConstants.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -37,9 +38,9 @@ public class AlertControllerTest {
 
         // GIVEN
         ChildAlertDTO childAlertDTO = new ChildAlertDTO();
-        childAlertDTO.setFirstName("testFirstName");
-        childAlertDTO.setLastName("testLastName");
-        childAlertDTO.setAge(12);
+        childAlertDTO.setFirstName(FIRST_NAME);
+        childAlertDTO.setLastName(LAST_NAME);
+        childAlertDTO.setAge(AGE);
         List<ChildAlertDTO> listChildAlertDTO = new ArrayList<>();
         listChildAlertDTO.add(childAlertDTO);
         Mockito.when(personService.getChildAlertByAddress(any(String.class))).thenReturn(listChildAlertDTO);
@@ -48,9 +49,9 @@ public class AlertControllerTest {
         mockMvc.perform(get("/childAlert?address=adresstest")
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$..firstName").value("testFirstName"))
-                .andExpect(jsonPath("$..lastName").value("testLastName"))
-                .andExpect(jsonPath("$..age").value(12));
+                .andExpect(jsonPath("$..firstName").value(FIRST_NAME))
+                .andExpect(jsonPath("$..lastName").value(LAST_NAME))
+                .andExpect(jsonPath("$..age").value(AGE));
 
     }
 
@@ -59,7 +60,7 @@ public class AlertControllerTest {
 
         // GIVEN :
         PhoneAlertDTO phoneAlertDTO = new PhoneAlertDTO();
-        phoneAlertDTO.setPhone("phonetest");
+        phoneAlertDTO.setPhone(PHONE);
         List<PhoneAlertDTO> listPhoneAlertDTO = new ArrayList<>();
         listPhoneAlertDTO.add(phoneAlertDTO);
         Mockito.when(personService.getPhoneAlertByFirestation(any(String.class))).thenReturn(listPhoneAlertDTO);
@@ -68,7 +69,7 @@ public class AlertControllerTest {
         mockMvc.perform(get("/phoneAlert?firestation=1")
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$..phone").value("phonetest"));
+                .andExpect(jsonPath("$..phone").value(PHONE));
     }
 
 }

@@ -24,6 +24,7 @@ public class MedicalRecord {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
+
         this.medications = medications;
         this.allergies = allergies;
     }
@@ -52,7 +53,7 @@ public class MedicalRecord {
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
-
+   
     public List<String> getMedications() {
         return medications;
     }

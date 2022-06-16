@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.openclassrooms.safetynet.constants.JsonConstants.*;
 import static com.openclassrooms.safetynet.controller.FireStationControllerTest.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -36,11 +37,11 @@ public class PersonInfoControllerTest {
     public void getPersonInfoTest() throws Exception {
         // GIVEN :
         InfoPersonDetailedDTO infoPersonDetailed = new InfoPersonDetailedDTO();
-        infoPersonDetailed.setFirstName("firstnametest");
-        infoPersonDetailed.setLastName("lastnametest");
-        infoPersonDetailed.setAddress("addresstest");
-        infoPersonDetailed.setAge(99);
-        infoPersonDetailed.setEmail("email@test.fr");
+        infoPersonDetailed.setFirstName(FIRST_NAME);
+        infoPersonDetailed.setLastName(LAST_NAME);
+        infoPersonDetailed.setAddress(ADDRESS);
+        infoPersonDetailed.setAge(AGE);
+        infoPersonDetailed.setEmail(EMAIL);
 
         List<InfoPersonDetailedDTO> listInfoPersonDetailed = new ArrayList<>();
         listInfoPersonDetailed.add(infoPersonDetailed);
@@ -53,10 +54,10 @@ public class PersonInfoControllerTest {
         mockMvc.perform(get("/personInfo?firstName=firstnametest&lastName=lastnametest")
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$..firstName").value("firstnametest"))
-                .andExpect(jsonPath("$..lastName").value("lastnametest"))
-                .andExpect(jsonPath("$..address").value("addresstest"))
-                .andExpect(jsonPath("$..age").value(99))
-                .andExpect(jsonPath("$..email").value("email@test.fr"));
+                .andExpect(jsonPath("$..firstName").value(FIRST_NAME))
+                .andExpect(jsonPath("$..lastName").value(LAST_NAME))
+                .andExpect(jsonPath("$..address").value(ADDRESS))
+                .andExpect(jsonPath("$..age").value(AGE))
+                .andExpect(jsonPath("$..email").value(EMAIL));
     }
 }
