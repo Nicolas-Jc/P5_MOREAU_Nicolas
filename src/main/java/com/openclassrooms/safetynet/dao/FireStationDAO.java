@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface FireStationDAO {
 
-    public List<FireStation> getAllFireStations();
+    List<FireStation> getAllFireStations();
 
-    public void setAllFireStations(List<FireStation> listFireStations);
+    void setAllFireStations(List<FireStation> listFireStations);
 
     List<String> getFireStationAdressById(String station);
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface PersonDAO {
 
-    public List<Person> getAllPersons();
+    List<Person> getAllPersons();
 
-    public void setAllPersons(List<Person> listPerson);
+    void setAllPersons(List<Person> listPerson);
 
-    public List<Person> findPersonByAdress(String address);
+    List<Person> findPersonByAdress(String address);
 
     Boolean deletePerson(String firstName, String lastName);
 

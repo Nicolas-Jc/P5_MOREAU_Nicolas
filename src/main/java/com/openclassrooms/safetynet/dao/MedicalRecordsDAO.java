@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface MedicalRecordsDAO {
 
-    public List<MedicalRecord> getAllMedicalRecords();
+    List<MedicalRecord> getAllMedicalRecords();
 
-    public void setAllMedicalRecords(List<MedicalRecord> listMedicalRecord);
+    void setAllMedicalRecords(List<MedicalRecord> listMedicalRecord);
 
     MedicalRecord getMedicalRecords(String firstName, String lastName);
 
