@@ -66,24 +66,28 @@
   ],
   "firestations": [
     {
+      "address": "99 Street Test FindPersonByAdress",
+      "station": "1"
+    },
+    {
       "address": "adresstest1",
       "station": "1"
+    },
+    {
+      "address": "",
+      "station": "DDDDD"
     },
     {
       "address": "adresstest2",
       "station": "2"
     },
     {
-      "address": "delete",
-      "station": "5"
+      "address": "adressToDelete",
+      "station": "3"
     },
     {
-      "address": "delete2",
-      "station": "delete2"
-    },
-    {
-      "address": "",
-      "station": "delete"
+      "address": "XXXXXX",
+      "station": "XXXXXX"
     }
   ],
   "medicalrecords": [

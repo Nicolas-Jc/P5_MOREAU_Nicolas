@@ -98,7 +98,7 @@ public class FireStationDAOImpl implements FireStationDAO {
                 return f.getStation();
             }
         }
-        return "Not Found";
+        return "Not Existing Address";
     }
 
 
