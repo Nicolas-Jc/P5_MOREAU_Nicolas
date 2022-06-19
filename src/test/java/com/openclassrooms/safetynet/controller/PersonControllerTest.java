@@ -1,11 +1,6 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetynet.dto.FireStationPerimeterDTO;
-import com.openclassrooms.safetynet.model.FireStation;
 import com.openclassrooms.safetynet.model.Person;
-import com.openclassrooms.safetynet.service.FireStationServiceImpl;
-import com.openclassrooms.safetynet.service.PersonService;
 import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,8 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.openclassrooms.safetynet.constants.JsonConstants.*;
 import static com.openclassrooms.safetynet.controller.FireStationControllerTest.asJsonString;

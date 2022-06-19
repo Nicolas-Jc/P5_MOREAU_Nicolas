@@ -1,9 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.InfoPersonDetailedDTO;
-import com.openclassrooms.safetynet.model.Person;
 import com.openclassrooms.safetynet.service.PersonServiceImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.openclassrooms.safetynet.constants.JsonConstants.*;
-import static com.openclassrooms.safetynet.controller.FireStationControllerTest.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

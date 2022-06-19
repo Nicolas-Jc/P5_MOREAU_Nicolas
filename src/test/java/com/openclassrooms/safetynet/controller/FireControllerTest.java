@@ -1,6 +1,5 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
 import com.openclassrooms.safetynet.dto.FireDTO;
 import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.junit.jupiter.api.Test;

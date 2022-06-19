@@ -1,9 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.FloodDTO;
-import com.openclassrooms.safetynet.dto.InfoPersonDetailedDTO;
 import com.openclassrooms.safetynet.service.FireStationServiceImpl;
-import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

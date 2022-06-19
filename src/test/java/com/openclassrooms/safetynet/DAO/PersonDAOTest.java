@@ -1,7 +1,6 @@
 package com.openclassrooms.safetynet.DAO;
 
 import com.openclassrooms.safetynet.dao.PersonDAO;
-import com.openclassrooms.safetynet.data.Data;
 import com.openclassrooms.safetynet.model.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

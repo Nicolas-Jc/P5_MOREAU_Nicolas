@@ -1,12 +1,10 @@
 package com.openclassrooms.safetynet.controller;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.openclassrooms.safetynet.dto.InfoPersonDetailedDTO;
+
 import com.openclassrooms.safetynet.model.MedicalRecord;
 
-import com.openclassrooms.safetynet.service.MedicalRecordService;
 import com.openclassrooms.safetynet.service.MedicalRecordServiceImpl;
-import com.openclassrooms.safetynet.service.PersonServiceImpl;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -64,8 +62,6 @@ public class MedicalRecordControllerTest {
         medicalRecord = new MedicalRecord();
         medicalRecord.setFirstName(FIRST_NAME);
         medicalRecord.setLastName(LAST_NAME);
-        //Date birthDate = dateFormat.parse("01/01/2000");
-        //medicalRecord.setBirthdate(birthDate);
         medicalRecord.setMedications(medicationsCsteList);
         medicalRecord.setAllergies(allergiesCsteList);
     }
@@ -114,7 +110,6 @@ public class MedicalRecordControllerTest {
     public void deleteMedicalRecordTest() throws Exception {
 
         // GIVEN :
-        //Date birthDate = dateFormat.parse("01/01/2000");
         medicalRecord.setBirthdate(birthDate);
 
         Mockito.when(medicalRecordService.delete(any(String.class), any(String.class))).thenReturn(true);
