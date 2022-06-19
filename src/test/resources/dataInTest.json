@@ -7,34 +7,7 @@
       "city": "Citytest1",
       "zip": "ziptest1",
       "phone": "phonetest1",
-      "email": "emailtest1@email.com"
-    },
-    {
-      "firstName": "Firstnametest2",
-      "lastName": "Lastnametest2",
-      "address": "adresstest2",
-      "city": "adresstest2",
-      "zip": "adresstest2",
-      "phone": "phonetest2",
-      "email": "emailtest2@email.com"
-    },
-    {
-      "firstName": "Firstnametestchildinfo",
-      "lastName": "Lastnametestchildinfo",
-      "address": "adresstestchildinfo",
-      "city": "Citytest1",
-      "zip": "ziptest1",
-      "phone": "phonetest1",
-      "email": "emailtest1@email.com"
-    },
-    {
-      "firstName": "Firstnametest3",
-      "lastName": "Lastnametest3",
-      "address": "adresstest3",
-      "city": "adresstest3",
-      "zip": "adresstest3",
-      "phone": "phonetest3",
-      "email": "emailtest3@email.com"
+      "email": "emailtest1@test.fr"
     },
     {
       "firstName": "FirstNameTestDel",
@@ -70,7 +43,7 @@
       "station": "1"
     },
     {
-      "address": "adresstest1",
+      "address": "adressStationToModify",
       "station": "1"
     },
     {
@@ -92,43 +65,36 @@
   ],
   "medicalrecords": [
     {
-      "firstName": "Firstnametest1",
-      "lastName": "Lastnametest1",
-      "birthdate": "01/01/2001",
-      "medications": [
-        "med1"
-      ],
-      "allergies": [
-        "allergi1"
-      ]
-    },
-    {
-      "firstName": "Firstnametest2",
-      "lastName": "Lastnametest2",
-      "birthdate": "02/02/2002",
-      "medications": [
-        "med2"
-      ],
-      "allergies": [
-        "allergi2"
-      ]
-    },
-    {
-      "firstName": "firstnamedeletetest",
-      "lastName": "lastnamedeletetest",
-      "birthdate": "02/18/2012",
+      "firstName": "firstnameToDeleteTest",
+      "lastName": "lastnameToDeleteTest",
+      "birthdate": "31/08/2019",
       "medications": [],
       "allergies": [
-        "peanut"
+        "nuts"
       ]
     },
     {
-      "firstName": "Firstnametestchildinfo",
-      "lastName": "Lastnametestchildinfo",
-      "birthdate": "01/01/2020",
-      "medications": [],
+      "firstName": "FirstNameGet",
+      "lastName": "LastNameGet",
+      "birthdate": "15/07/2019",
+      "medications": [
+        "TestGethydrapermazol"
+      ],
       "allergies": [
-        "peanut"
+        "TestGetshellfish"
+      ]
+    },
+    {
+      "firstName": "FirstNameModify",
+      "lastName": "LastNameModify",
+      "birthdate": "14/08/2000",
+      "medications": [
+        "TestModifyAznol_NoUpdate",
+        "TestModifyPharmacol_Update"
+      ],
+      "allergies": [
+        "TestModifyShellfish_Update",
+        "TestModifyPeanut_NoUpdate"
       ]
     }
   ]

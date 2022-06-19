@@ -1,6 +1,7 @@
 package com.openclassrooms.safetynet.DAO;
 
 import com.openclassrooms.safetynet.dao.PersonDAO;
+import com.openclassrooms.safetynet.data.Data;
 import com.openclassrooms.safetynet.model.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,27 +17,15 @@ public class PersonDAOTest {
     @Autowired
     PersonDAO personDAO;
 
-    @Test
-    public void deleteExistingPersonTest() {
+    /*@Test
+    public void getAllPersonsTest() {
 
-        // GIVEN // WHEN
-        boolean returnDelete = personDAO.deletePerson("FirstNameTestDel"
-                , "LastNameTestDel");
+        //GIVEN
+        List<Person> listPerson = personDAO.getAllPersons();
+        // WHEN
         // THEN
-        assertThat(returnDelete).isTrue();
-
-    }
-
-    @Test
-    public void deleteNotExistingPersonTest() {
-
-        // GIVEN // WHEN
-        boolean returnDelete = personDAO.deletePerson("FirstNameNotExist"
-                , "LastNameNotExist");
-        // THEN
-        assertThat(returnDelete).isFalse();
-
-    }
+        assertThat(listPerson.size()).isEqualTo(7);
+    }*/
 
     @Test
     public void findPersonByAddressTest() {
@@ -55,6 +44,16 @@ public class PersonDAOTest {
         List<Person> listPerson = personDAO.findPersonByAdress("99 Street Not Existing ");
         // THEN
         assertThat(listPerson).isEmpty();
+    }
+
+    @Test
+    public void findPersonByFirstNameAndLastNameTest() {
+
+        // GIVEN // WHEN
+        List<Person> listPerson = personDAO.findPersonByFirstNameAndLastName("FirstNameTestFindByLnameFname"
+                , "LastNameTestFindByLnameFname");
+        // THEN
+        assertThat(listPerson.get(0).getAddress()).isEqualTo("99 Street Test FindPersonByFirstNameLastName");
     }
 
     @Test
@@ -102,24 +101,27 @@ public class PersonDAOTest {
         assertThat(personModified.getEmail()).isEqualTo(personToModify.getEmail());
     }
 
+
     @Test
-    public void findPersonByFirstNameAndLastNameTest() {
+    public void deleteExistingPersonTest() {
 
         // GIVEN // WHEN
-        List<Person> listPerson = personDAO.findPersonByFirstNameAndLastName("FirstNameTestFindByLnameFname"
-                , "LastNameTestFindByLnameFname");
+        boolean returnDelete = personDAO.deletePerson("FirstNameTestDel"
+                , "LastNameTestDel");
         // THEN
-        assertThat(listPerson.get(0).getAddress()).isEqualTo("99 Street Test FindPersonByFirstNameLastName");
+        assertThat(returnDelete).isTrue();
+
     }
 
-    /*@Test
-    public void getAllPersonsTest() {
+    @Test
+    public void deleteNotExistingPersonTest() {
 
-        //GIVEN
-        List<Person> listPerson = personDAO.getAllPersons();
-        // WHEN
+        // GIVEN // WHEN
+        boolean returnDelete = personDAO.deletePerson("FirstNameNotExist"
+                , "LastNameNotExist");
         // THEN
-        assertThat(listPerson.size()).isEqualTo(7);
-    }*/
+        assertThat(returnDelete).isFalse();
+
+    }
 
 }

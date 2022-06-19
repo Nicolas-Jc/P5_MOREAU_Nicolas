@@ -1,12 +1,11 @@
 package com.openclassrooms.safetynet.DAO;
 
 import com.openclassrooms.safetynet.dao.FireStationDAO;
-import com.openclassrooms.safetynet.dao.PersonDAO;
 import com.openclassrooms.safetynet.model.FireStation;
-import com.openclassrooms.safetynet.model.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 
 import java.util.List;
 
@@ -42,6 +41,18 @@ public class FireStationDAOTest {
     }
 
     @Test
+    public void getFireStationAdressByIdTest() {
+        // GIVEN // WHEN // THEN
+        assertThat(fireStationDAO.getFireStationAdressById("1")).isNotNull();
+    }
+
+    @Test
+    public void getFireStationAdressByIdNotExistingTest() {
+        // GIVEN // WHEN // THEN
+        assertThat(fireStationDAO.getFireStationAdressById("99")).isEmpty();
+    }
+
+    @Test
     public void addFireStationTest() {
         // GIVEN
         FireStation fireStationTest = new FireStation("AdressToAdd", "stationToAdd");
@@ -56,24 +67,12 @@ public class FireStationDAOTest {
     @Test
     public void modifyFireStationTest() {
         // GIVEN
-        FireStation fireStationTest = new FireStation("adresstest1", "9");
+        FireStation fireStationTest = new FireStation("adressStationToModify", "9");
         // WHEN
         FireStation fireStationModified = fireStationDAO.modifyFireStation(fireStationTest);
         // THEN
         assertThat(fireStationModified.getAddress()).isEqualTo(fireStationTest.getAddress());
         assertThat(fireStationModified.getStation()).isEqualTo(fireStationTest.getStation());
-    }
-
-    @Test
-    public void getFireStationAdressByIdTest() {
-        // GIVEN // WHEN // THEN
-        assertThat(fireStationDAO.getFireStationAdressById("1")).isNotNull();
-    }
-
-    @Test
-    public void getFireStationAdressByIdNotExistingTest() {
-        // GIVEN // WHEN // THEN
-        assertThat(fireStationDAO.getFireStationAdressById("99")).isEmpty();
     }
 
     @Test
