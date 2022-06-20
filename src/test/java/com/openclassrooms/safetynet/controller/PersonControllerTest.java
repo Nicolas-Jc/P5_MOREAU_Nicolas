@@ -50,7 +50,7 @@ public class PersonControllerTest {
     public void addPersonTest() throws Exception {
 
         // GIVEN
-        Mockito.when(personService.add(any(Person.class))).thenReturn(person);
+        Mockito.when(personService.addPerson(any(Person.class))).thenReturn(person);
         // WHEN
         // THEN
         mockMvc.perform(post("/person")
@@ -66,7 +66,7 @@ public class PersonControllerTest {
     public void modifyPersonTest() throws Exception {
 
         // GIVEN
-        Mockito.when(personService.modify(any(Person.class))).thenReturn(person);
+        Mockito.when(personService.modifyPerson(any(Person.class))).thenReturn(person);
         // WHEN
         // THEN
         mockMvc.perform(put("/person")
@@ -81,7 +81,7 @@ public class PersonControllerTest {
     public void deletePersonTest() throws Exception {
 
         // GIVEN
-        Mockito.when(personService.delete(any(String.class), any(String.class))).thenReturn(true);
+        Mockito.when(personService.deletePerson(any(String.class), any(String.class))).thenReturn(true);
         // WHEN
         // THEN
         mockMvc.perform(delete("/person?firstname=" + FIRST_NAME + "&lastname=" + LAST_NAME)

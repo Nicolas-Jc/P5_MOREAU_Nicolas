@@ -21,7 +21,7 @@ public class PersonController {
     @DeleteMapping
     public String deletePerson(@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName) {
 
-        if (personService.delete(firstName, lastName)) {
+        if (personService.deletePerson(firstName, lastName)) {
             logger.info("Delete person OK");
             return "Deleted person : " + firstName + " " + lastName;
         }
@@ -31,7 +31,7 @@ public class PersonController {
     @PostMapping
     public Person addPerson(@RequestBody Person person) {
 
-        Person personAdded = personService.add(person);
+        Person personAdded = personService.addPerson(person);
 
         if (personAdded == null) {
             logger.error("addPerson : KO");
@@ -43,7 +43,7 @@ public class PersonController {
     @PutMapping
     public Person modifyPerson(@RequestBody Person person) {
 
-        Person personModified = personService.modify(person);
+        Person personModified = personService.modifyPerson(person);
 
         if (personModified == null) {
             logger.error("modifyPerson : Not Found");

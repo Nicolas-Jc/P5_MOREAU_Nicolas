@@ -176,17 +176,17 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Boolean delete(String firstName, String lastName) {
+    public Boolean deletePerson(String firstName, String lastName) {
         return personDAO.deletePerson(firstName, lastName);
     }
 
     @Override
-    public Person add(Person person) {
+    public Person addPerson(Person person) {
         return personDAO.addPerson(person);
     }
 
     @Override
-    public Person modify(Person person) {
+    public Person modifyPerson(Person person) {
         return personDAO.modifyPerson(person);
     }
 

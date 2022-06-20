@@ -95,9 +95,9 @@ public class MedicalRecordDAOTest {
     @Test
     public void modifyMedicalRecordNotExistingTest() throws ParseException {
         // GIVEN
-        String stringDate = "99/99/1999";
+        String Date = "99/99/1999";
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date birthDate = dateFormat.parse(stringDate);
+        Date birthDate = dateFormat.parse(Date);
         List<String> medications = new ArrayList<String>();
         medications.add("");
         List<String> allergies = new ArrayList<String>();

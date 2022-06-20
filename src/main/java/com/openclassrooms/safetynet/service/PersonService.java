@@ -20,9 +20,9 @@ public interface PersonService {
 
     List<InfoPersonDetailedDTO> getPersonByFirstLastName(String firstName, String lastName);
 
-    Boolean delete(String firstName, String lastName);
+    Boolean deletePerson(String firstName, String lastName);
 
-    Person add(Person person);
+    Person addPerson(Person person);
 
-    Person modify(Person person);
+    Person modifyPerson(Person person);
 }
