@@ -71,7 +71,7 @@ public class PersonServiceImpl implements PersonService {
     public List<PhoneAlertDTO> getPhoneAlertByFirestation(String station) {
 
         // Liste des différentes adresses desservies par le No de station dans le Json Entree
-        List<String> listAdress = fireStationDAO.getFireStationAdressById(station);
+        List<String> listAdress = fireStationDAO.getFireStationAdressByStation(station);
 
         // Création Liste attendue vide pour sortie
         List<PhoneAlertDTO> listPhoneInfo = new ArrayList<>();

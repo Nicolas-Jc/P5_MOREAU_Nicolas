@@ -22,7 +22,7 @@ public class FireStationDAOImpl implements FireStationDAO {
     }
 
     @Override
-    public List<String> getFireStationAdressById(String station) {
+    public List<String> getFireStationAdressByStation(String station) {
         List<String> listAddress = new ArrayList<>();
 
         for (FireStation f : Data.getFireStations()) {

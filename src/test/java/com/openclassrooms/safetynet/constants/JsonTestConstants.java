@@ -1,6 +1,6 @@
 package com.openclassrooms.safetynet.constants;
 
-public class JsonConstants {
+public class JsonTestConstants {
 
     public static final String FIRST_NAME = "FirstNameTest";
     public static final String LAST_NAME = "LastNameTest";

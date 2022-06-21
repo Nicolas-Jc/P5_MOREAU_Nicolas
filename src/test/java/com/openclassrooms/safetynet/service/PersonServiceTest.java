@@ -71,7 +71,7 @@ public class PersonServiceTest {
         List<String> listAdress = new ArrayList<>();
         listAdress.add("adresseToFind1");
         listAdress.add("adresseToFind2");
-        Mockito.when(fireStationDAO.getFireStationAdressById(any(String.class))).thenReturn(listAdress);
+        Mockito.when(fireStationDAO.getFireStationAdressByStation(any(String.class))).thenReturn(listAdress);
 
         List<Person> listPersons = new ArrayList<>();
         Person person1 = new Person("firstName1", "lastName1", "adresseToFind1", "City", "", "333-444-5555", "email1@test.fr");
@@ -125,7 +125,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    void getChildAlertByAddressTest() throws Exception {
+    public void getChildAlertByAddressTest() throws Exception {
         // GIVEN
         List<Person> listPersons = new ArrayList<>();
         Person person1 = new Person("firstName1", "lastName1", "adress1", "City1", "", "", "email1@test.fr");
@@ -162,7 +162,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    void getPersonByAddressTest() throws Exception {
+    public void getPersonByAddressTest() throws Exception {
         // GIVEN
         List<Person> listPersons = new ArrayList<>();
         Person person1 = new Person("firstName1", "lastName1", "adress1", "City1", "", "", "email1@test.fr");

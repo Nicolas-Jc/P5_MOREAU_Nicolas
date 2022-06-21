@@ -40,13 +40,13 @@ public class FireStationDAOTest {
     @Test
     public void getFireStationAdressByIdTest() {
         // GIVEN // WHEN // THEN
-        assertThat(fireStationDAO.getFireStationAdressById("1")).isNotNull();
+        assertThat(fireStationDAO.getFireStationAdressByStation("1")).isNotNull();
     }
 
     @Test
     public void getFireStationAdressByIdNotExistingTest() {
         // GIVEN // WHEN // THEN
-        assertThat(fireStationDAO.getFireStationAdressById("99")).isEmpty();
+        assertThat(fireStationDAO.getFireStationAdressByStation("99")).isEmpty();
     }
 
     @Test

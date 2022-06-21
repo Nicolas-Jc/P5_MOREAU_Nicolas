@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.openclassrooms.safetynet.constants.JsonConstants.*;
+import static com.openclassrooms.safetynet.constants.JsonTestConstants.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -67,7 +67,7 @@ public class FireStationControllerTest {
         FireStationPerimeterDTO FireStationPerimeterDTO = new FireStationPerimeterDTO();
         FireStationPerimeterDTO.setAdultCount(5);
         FireStationPerimeterDTO.setChildCount(10);
-        Mockito.when(fireStationService.fireStationPersonsScope(any(String.class))).thenReturn(FireStationPerimeterDTO);
+        Mockito.when(fireStationService.getFireStationPersonsScope(any(String.class))).thenReturn(FireStationPerimeterDTO);
 
         //WHEN
         // THEN

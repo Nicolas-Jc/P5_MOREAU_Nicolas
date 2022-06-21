@@ -10,7 +10,7 @@ public interface FireStationDAO {
 
     void setAllFireStations(List<FireStation> listFireStations);
 
-    List<String> getFireStationAdressById(String station);
+    List<String> getFireStationAdressByStation(String station);
 
     List<FireStation> deleteFireStation(FireStation fireStation);
 

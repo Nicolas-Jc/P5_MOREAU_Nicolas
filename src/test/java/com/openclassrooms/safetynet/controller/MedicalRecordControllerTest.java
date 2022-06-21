@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-import static com.openclassrooms.safetynet.constants.JsonConstants.*;
+import static com.openclassrooms.safetynet.constants.JsonTestConstants.*;
 import static com.openclassrooms.safetynet.controller.FireStationControllerTest.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;

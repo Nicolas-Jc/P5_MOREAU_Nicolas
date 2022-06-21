@@ -15,7 +15,7 @@ public interface FireStationService {
 
     FireStation add(FireStation fireStation);
 
-    FireStationPerimeterDTO fireStationPersonsScope(String station);
+    FireStationPerimeterDTO getFireStationPersonsScope(String station);
 
     List<FloodDTO> getFloodListByStationsList(List<String> stations);
 }

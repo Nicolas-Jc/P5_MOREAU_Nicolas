@@ -51,7 +51,7 @@ public class FireStationServiceImpl implements FireStationService {
     }
 
     @Override
-    public FireStationPerimeterDTO fireStationPersonsScope(String station) {
+    public FireStationPerimeterDTO getFireStationPersonsScope(String station) {
 
         // Liste Attendue en sortie avec les 2 compteurs
         FireStationPerimeterDTO fireStationPerimeter = new FireStationPerimeterDTO();
@@ -64,7 +64,7 @@ public class FireStationServiceImpl implements FireStationService {
         int agePerson = 0;
 
         // Liste des différentes adresses desservies par le No de station saisi dans le Json Entree
-        List<String> listAdress = fireStationDAO.getFireStationAdressById(station);
+        List<String> listAdress = fireStationDAO.getFireStationAdressByStation(station);
 
         // Récupération de la Liste de toutes les persons du fichier en entrée
         List<Person> listPersonsAll = personDAO.getAllPersons();
@@ -116,7 +116,7 @@ public class FireStationServiceImpl implements FireStationService {
         // et récupération des adresses associés pour chacun
         for (String s : stations) {
             List<String> adressesForStation = new ArrayList<>();
-            adressesForStation = fireStationDAO.getFireStationAdressById(s);
+            adressesForStation = fireStationDAO.getFireStationAdressByStation(s);
             adresses.addAll(adressesForStation);
         }
 
