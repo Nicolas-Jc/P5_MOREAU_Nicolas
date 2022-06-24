@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "c51175cc-4cd3-4fa0-8420-a0c48ea3704f",
+		"name": "OCR_Requêtes_Projet5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.http://localhost:8080/communityEmail?city=<city>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/communityEmail?city=Culver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"communityEmail"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Culver"
+						},
+						{
+							"key": "city",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.http://localhost:8080/phoneAlert?firestation=<firestation_number>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/phoneAlert?firestation=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"phoneAlert"
+					],
+					"query": [
+						{
+							"key": "firestation",
+							"value": "1"
+						},
+						{
+							"key": "firestation",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "firestation",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "firestation",
+							"value": "4",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.http://localhost:8080/childAlert?address=<address>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/childAlert?address=892 Downing Ct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"childAlert"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "1509 Culver St",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "29 15th St",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "834 Binoc Ave",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "644 Gershwin Cir",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "748 Townings Dr",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "112 Steppes Pl",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "489 Manchester St",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "892 Downing Ct"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4.http://localhost:8080/fire?address=892 Downing Ct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fire?address=947 E. Rose Dr",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fire"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "892 Downing Ct",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "947 E. Rose Dr"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.http://localhost:8080/firestation?stationNumber=<station_number>",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/firestation?stationNumber=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"firestation"
+					],
+					"query": [
+						{
+							"key": "stationNumber",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6.http://localhost:8080/personInfo?firstName=Peter&lastName=Duncan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personInfo?firstName=John&lastName=Boyd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personInfo"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "John"
+						},
+						{
+							"key": "lastName",
+							"value": "Boyd"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7.http://localhost:8080/flood",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/flood?stations=1,2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flood"
+					],
+					"query": [
+						{
+							"key": "stations",
+							"value": "1,2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8.http://localhost:8080/person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"firstName\":\"TestPrenom\", \r\n\"lastName\":\"TestNom\", \r\n\"address\":\"99999 Test Street\", \r\n\"city\":\"TestVille\", \r\n\"zip\":\"99999\", \r\n\"phone\":\"999-999-999\", \r\n\"email\":\"testmail@email.test\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9.http://localhost:8080/medicalRecord",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"firstName\":\"TestPrenom\", \r\n\"lastName\":\"TestNom\", \r\n\"birthdate\":\"99/99/9999\", \r\n\"medications\":[\"medication1:999mg\", \"medication2:999mg\"], \r\n\"allergies\":[\"testallergie1\", \"testallergie2\", \"testallergie3\"] }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/medicalRecord",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"medicalRecord"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10.http://localhost:8080/firestation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"address\":\"99 99th St\", \r\n\"station\":\"999\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/firestation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"firestation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11.http://localhost:8080/person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"firstName\":\"Jacob\", \r\n\"lastName\":\"Boyd\", \r\n\"address\":\"9999 Test Street\", \r\n\"city\":\"TestVille\", \r\n\"zip\":\"99999\", \r\n\"phone\":\"999-999-9999\", \r\n\"email\":\"testmail@email.test\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12.http://localhost:8080/medicalRecord",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"firstName\":\"Jacob\", \r\n\"lastName\":\"Boyd\", \r\n\"birthdate\":\"99/99/9999\", \r\n\"medications\":[\"testmedic1:999mg\", \"testmedic2:999mg\"], \r\n\"allergies\":[\"testallergie1\", \"testallergie2\", \"testallergie3\"] }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/medicalRecord",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"medicalRecord"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13.http://localhost:8080/firestation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"address\":\"29 15th St\", \r\n\"station\":\"999\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/firestation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"firestation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "14.http://localhost:8080/person?firstname&lastname",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"person"
+					],
+					"query": [
+						{
+							"key": "firstname",
+							"value": "John",
+							"disabled": true
+						},
+						{
+							"key": "lastname",
+							"value": "Boyd",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15.http://localhost:8080/medicalRecord",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/medicalRecord?firstName=Jacob&lastName=Boyd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"medicalRecord"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Jacob"
+						},
+						{
+							"key": "lastName",
+							"value": "Boyd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "16.http://localhost:8080/firestation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"address\":\"1509 Culver St\", \r\n\"station\":\"3\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/firestation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"firestation"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "city",
+			"value": "<city>"
+		}
+	]
+}

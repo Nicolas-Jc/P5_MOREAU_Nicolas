@@ -25,10 +25,10 @@ public class FloodController {
         if (stations.isEmpty()) {
             logger.error("getFloodList : stations are empty");
             throw new Exception("list of stations is empty");
+        } else {
+            logger.info("getFloodList OK");
+            return fireStationService.getFloodListByStationsList(stations);
         }
-        logger.info("getFloodList OK");
-        return fireStationService.getFloodListByStationsList(stations);
-
     }
 
 }

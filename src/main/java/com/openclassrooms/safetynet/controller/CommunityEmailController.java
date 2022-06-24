@@ -1,6 +1,7 @@
 package com.openclassrooms.safetynet.controller;
 
 import com.openclassrooms.safetynet.dto.CommunityEmailDTO;
+import com.openclassrooms.safetynet.dto.InfoPersonDetailedDTO;
 import com.openclassrooms.safetynet.service.PersonServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

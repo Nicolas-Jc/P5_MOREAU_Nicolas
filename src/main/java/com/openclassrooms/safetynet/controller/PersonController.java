@@ -35,8 +35,9 @@ public class PersonController {
 
         if (personAdded == null) {
             logger.error("addPerson : KO");
+        } else {
+            logger.info("addPerson " + personAdded.toString());
         }
-        logger.info("addPerson " + personAdded.toString());
         return personAdded;
     }
 
@@ -47,8 +48,9 @@ public class PersonController {
 
         if (personModified == null) {
             logger.error("modifyPerson : Not Found");
+        } else {
+            logger.info("modifyPerson : OK");
         }
-        logger.info("modifyPerson : OK");
         return personModified;
     }
 }

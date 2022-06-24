@@ -29,9 +29,10 @@ public class FireController {
         if (address.isEmpty()) {
             logger.error("getFire => address empty !");
             throw new Exception("address is empty");
+        } else {
+            logger.info("getFire : OK");
+            return personService.getPersonByAddress(address);
         }
-        logger.info("getFire : OK");
-        return personService.getPersonByAddress(address);
     }
 
 }

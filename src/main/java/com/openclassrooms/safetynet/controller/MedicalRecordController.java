@@ -25,7 +25,7 @@ public class MedicalRecordController {
 
         if (medicalRecordService.delete(firstName, lastName)) {
             logger.info("Deleteted medicalrecord : " + medicalRecordName);
-            return "Deleteted medicalrecord : " + medicalRecordName;
+            return "Deleted medicalrecord : " + medicalRecordName;
         }
         return null;
     }
@@ -37,10 +37,10 @@ public class MedicalRecordController {
 
         if (medicalRecordModified == null) {
             logger.error("modifyMedicalRecord KO");
+        } else {
+            logger.info("modified medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
         }
-        logger.info("modified medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
         return medicalRecordModified;
-
     }
 
     @PostMapping
@@ -50,8 +50,9 @@ public class MedicalRecordController {
 
         if (medicalRecordAdded == null) {
             logger.error("addMedicalRecord KO");
+        } else {
+            logger.info("created medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
         }
-        logger.info("created medicalrecord : " + medicalRecord.getFirstName() + " " + medicalRecord.getLastName());
         return medicalRecordAdded;
 
     }

@@ -25,9 +25,10 @@ public class AlertController {
         if (station.isEmpty()) {
             logger.error("getPhoneAlert => station empty !");
             throw new Exception("station is empty");
+        } else {
+            logger.info("getPhoneAlert : OK");
+            return personService.getPhoneAlertByFirestation(station);
         }
-        logger.info("getPhoneAlert : OK");
-        return personService.getPhoneAlertByFirestation(station);
     }
 
     @GetMapping(value = "/childAlert")
@@ -36,8 +37,9 @@ public class AlertController {
         if (address.isEmpty()) {
             logger.error("getChildAlert => address empty !");
             throw new Exception("address is empty");
+        } else {
+            logger.info("getChildAlert : OK");
+            return personService.getChildAlertByAddress(address);
         }
-        logger.info("getChildAlert : OK");
-        return personService.getChildAlertByAddress(address);
     }
 }

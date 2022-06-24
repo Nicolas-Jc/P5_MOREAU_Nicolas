@@ -29,9 +29,10 @@ public class FireStationController {
         if (station.isEmpty()) {
             logger.error("getFireStationCoverage => station empty !");
             throw new Exception("station is empty");
+        } else {
+            logger.info("getFireStationCoverage OK");
+            return fireStationService.getFireStationPersonsScope(station);
         }
-        logger.info("getFireStationCoverage OK");
-        return fireStationService.getFireStationPersonsScope(station);
     }
 
     @DeleteMapping
